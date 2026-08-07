@@ -39,7 +39,7 @@ class PrendaController extends Controller
             'talla' => 'required|string',
             'categoria' => 'required|string|max:255',
             'estado' => 'required|string',
-            'imagen' => 'required|image',
+            'imagen' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
 
         if ($request->hasFile('imagen')) {
@@ -75,7 +75,7 @@ class PrendaController extends Controller
             'talla' => 'required|string',
             'categoria' => 'required|string|max:255',
             'estado' => 'required|string',
-            'imagen' => 'nullable|image',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
 
         if ($request->hasFile('imagen')) {

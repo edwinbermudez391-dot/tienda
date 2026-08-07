@@ -38,5 +38,8 @@ RUN composer install --optimize-autoloader --no-dev
 RUN npm install
 RUN npm run build
 
-# 9. Dar permisos de seguridad a las carpetas de Laravel
+# 9. Crear el enlace simbólico del storage para que las imágenes sean accesibles
+RUN php artisan storage:link
+
+# 10. Dar permisos de seguridad a las carpetas de Laravel
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
