@@ -84,9 +84,9 @@
                     @forelse($prendas as $prenda)
                     <tr class="table-row border-b border-white/5 last:border-b-0">
                         <td class="px-5 py-4">
-                            <div class="h-14 w-14 overflow-hidden rounded-lg border border-white/10 bg-[#111210]">
+                            <div class="h-14 w-14 flex-shrink-0 overflow-hidden rounded-md border border-white/10 bg-[#111210]">
                                 @if($prenda->imagen)
-                                    <img src="{{ asset('storage/' . $prenda->imagen) }}" alt="{{ $prenda->titulo }}" class="h-full w-full object-cover">
+                                    <img src="{{ asset('storage/' . $prenda->imagen) }}" alt="{{ $prenda->titulo }}" class="h-full w-full object-cover object-center">
                                 @else
                                     <div class="flex h-full w-full items-center justify-center text-[#a5aaa6] text-xs mono">N/A</div>
                                 @endif
@@ -138,9 +138,9 @@
                 @forelse($prendas as $prenda)
                 <div class="p-5">
                     <div class="flex gap-4">
-                        <div class="h-20 w-20 shrink-0 overflow-hidden rounded-lg border border-white/10 bg-[#111210]">
+                        <div class="h-16 w-16 flex-shrink-0 overflow-hidden rounded-md border border-white/10 bg-[#111210]">
                             @if($prenda->imagen)
-                                <img src="{{ asset('storage/' . $prenda->imagen) }}" alt="{{ $prenda->titulo }}" class="h-full w-full object-cover">
+                                <img src="{{ asset('storage/' . $prenda->imagen) }}" alt="{{ $prenda->titulo }}" class="h-full w-full object-cover object-center">
                             @else
                                 <div class="flex h-full w-full items-center justify-center text-[#a5aaa6] text-xs mono">N/A</div>
                             @endif
