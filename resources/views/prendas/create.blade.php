@@ -139,6 +139,29 @@
             </div>
 
             <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-[#f3f2ec]/70 mb-4" style="font-family: 'Space Mono', monospace;">
+                    Visibilidad en Secciones
+                </label>
+                <div class="space-y-3">
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" name="mostrar_spotlight" value="1" {{ old('mostrar_spotlight') ? 'checked' : '' }}
+                            class="w-5 h-5 rounded border-2 border-[#f3f2ec]/20 bg-[#111210] text-[#c8ff00] focus:ring-[#c8ff00]/50 focus:ring-offset-0 cursor-pointer transition-colors checked:bg-[#c8ff00] checked:border-[#c8ff00]">
+                        <span class="text-sm text-[#f3f2ec]/80 group-hover:text-[#c8ff00] transition-colors">Spotlight (Piezas destacadas)</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" name="mostrar_catalogo" value="1" {{ old('mostrar_catalogo', true) ? 'checked' : '' }}
+                            class="w-5 h-5 rounded border-2 border-[#f3f2ec]/20 bg-[#111210] text-[#c8ff00] focus:ring-[#c8ff00]/50 focus:ring-offset-0 cursor-pointer transition-colors checked:bg-[#c8ff00] checked:border-[#c8ff00]">
+                        <span class="text-sm text-[#f3f2ec]/80 group-hover:text-[#c8ff00] transition-colors">Catálogo / Exposición</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" name="mostrar_muro" value="1" {{ old('mostrar_muro') ? 'checked' : '' }}
+                            class="w-5 h-5 rounded border-2 border-[#f3f2ec]/20 bg-[#111210] text-[#c8ff00] focus:ring-[#c8ff00]/50 focus:ring-offset-0 cursor-pointer transition-colors checked:bg-[#c8ff00] checked:border-[#c8ff00]">
+                        <span class="text-sm text-[#f3f2ec]/80 group-hover:text-[#c8ff00] transition-colors">Muro de Estilo</span>
+                    </label>
+                </div>
+            </div>
+
+            <div>
                 <label for="imagen" class="block text-xs font-bold uppercase tracking-wider text-[#f3f2ec]/70 mb-2" style="font-family: 'Space Mono', monospace;">
                     Imagen <span class="text-[#c8ff00]">*</span>
                 </label>
@@ -163,7 +186,7 @@
                     Guardar Prenda
                 </button>
                 <a
-                    href="{{ route('prendas.index') }}"
+                    href="{{ route('prendas.admin') }}"
                     class="px-6 py-3.5 border border-[#f3f2ec]/20 text-[#f3f2ec]/70 rounded hover:border-[#c8ff00] hover:text-[#c8ff00] transition-colors text-sm uppercase tracking-wider"
                     style="font-family: 'Space Mono', monospace;"
                 >

@@ -18,7 +18,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'M',
                 'categoria' => 'Hoodies',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Hoodie Classic Black Edition',
@@ -27,7 +27,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'L',
                 'categoria' => 'Hoodies',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1578768079470-0a4536e2b2c3?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1509942774463-acf339cf87d5?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Hoodie Techwear Futuristic',
@@ -36,7 +36,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'M',
                 'categoria' => 'Hoodies',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1578768079470-0a4536e2b2c3?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Hoodie Vintage Washed Grey',
@@ -45,7 +45,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'S',
                 'categoria' => 'Hoodies',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1614975059251-992f11792571?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Hoodie Zip-Up Street Style',
@@ -54,7 +54,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'L',
                 'categoria' => 'Hoodies',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Hoodie Minimal Logo',
@@ -63,7 +63,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'M',
                 'categoria' => 'Hoodies',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1542406775-ade58c52d2e4?auto=format&fit=crop&w=800&q=80',
             ],
 
             // CAMISETAS (7 productos)
@@ -74,7 +74,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'L',
                 'categoria' => 'Camisetas',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Camiseta Basic Essential White',
@@ -83,7 +83,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'M',
                 'categoria' => 'Camisetas',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Camiseta Vintage Bootleg Rap Tee',
@@ -92,7 +92,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'L',
                 'categoria' => 'Camisetas',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Camiseta Longline Tech',
@@ -101,7 +101,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'M',
                 'categoria' => 'Camisetas',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1562157873-818bc07268b8?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1562157873-818bc07268b8?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Camiseta Tie-Dye Psychedelic',
@@ -110,7 +110,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'S',
                 'categoria' => 'Camisetas',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1529374255404-311a2a4b1fd9?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1529374255404-311a2a4b1fd9?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Camiseta Pocket Tee Minimal',
@@ -119,7 +119,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'M',
                 'categoria' => 'Camisetas',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Camiseta Mesh Transparent',
@@ -128,7 +128,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'L',
                 'categoria' => 'Camisetas',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1503341504253-dff4f94032fc?auto=format&fit=crop&w=800&q=80',
             ],
 
             // PANTALONES (6 productos)
@@ -139,7 +139,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'M',
                 'categoria' => 'Pantalones',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Pantalón Wide Leg Denim',
@@ -148,7 +148,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'L',
                 'categoria' => 'Pantalones',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1541099649105-f69ad21f5120?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1541099649105-f69ad21f5120?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Pantalón Parachute Y2K',
@@ -157,7 +157,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'M',
                 'categoria' => 'Pantalones',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1594633312681-425c7b9dccd1?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1594633312681-425c7b9dccd1?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Jogger Essential Comfort',
@@ -166,7 +166,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'S',
                 'categoria' => 'Pantalones',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Pantalón Cargo Oversize',
@@ -175,7 +175,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'L',
                 'categoria' => 'Pantalones',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1517438476312-10d79c077509?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Jean Skinny Black Destroyed',
@@ -184,7 +184,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'M',
                 'categoria' => 'Pantalones',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=800&q=80',
             ],
 
             // CHAQUETAS (6 productos)
@@ -195,7 +195,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'M',
                 'categoria' => 'Chaquetas',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Chaqueta Denim Oversized',
@@ -204,7 +204,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'L',
                 'categoria' => 'Chaquetas',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1544022613-e87ca75a784a?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Windbreaker Tech Shell',
@@ -213,7 +213,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'M',
                 'categoria' => 'Chaquetas',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Chaqueta Puffer Ligera',
@@ -222,7 +222,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'S',
                 'categoria' => 'Chaquetas',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1544923246-77307dd270b1?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1544923246-77307dd270b1?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Chaqueta Leather Biker',
@@ -231,7 +231,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'M',
                 'categoria' => 'Chaquetas',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1551537789-42834e003897?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1551537789-42834e003897?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Chaqueta Varsity Letterman',
@@ -240,7 +240,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'L',
                 'categoria' => 'Chaquetas',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1578932750294-f5075e85f44a?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1578932750294-f5075e85f44a?auto=format&fit=crop&w=800&q=80',
             ],
 
             // ACCESORIOS (5 productos)
@@ -251,7 +251,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'Única',
                 'categoria' => 'Accesorios',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Riñonera Crossbody Utility',
@@ -260,7 +260,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'Única',
                 'categoria' => 'Accesorios',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Bufanda Chunky Knit',
@@ -269,7 +269,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'Única',
                 'categoria' => 'Accesorios',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Mochila Tech Backpack',
@@ -278,7 +278,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'Única',
                 'categoria' => 'Accesorios',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'titulo' => 'Gorra Snapback Classic',
@@ -287,7 +287,7 @@ class PrendaSeeder extends Seeder
                 'talla' => 'Única',
                 'categoria' => 'Accesorios',
                 'estado' => 'disponible',
-                'imagen' => 'https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?w=800&q=80',
+                'imagen' => 'https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?auto=format&fit=crop&w=800&q=80',
             ],
         ];
 

@@ -14,5 +14,8 @@ class Prenda extends Model
         'categoria',
         'estado',
         'imagen',
+        'mostrar_spotlight',
+        'mostrar_catalogo',
+        'mostrar_muro',
     ];
 }

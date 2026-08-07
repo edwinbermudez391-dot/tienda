@@ -10,12 +10,14 @@ class PrendaController extends Controller
 {
     public function index()
     {
-        $query = Prenda::query();
+        $query = Prenda::where('mostrar_catalogo', true);
         if (request()->filled('categoria')) {
             $query->where('categoria', request('categoria'));
         }
         $prendas = $query->latest()->paginate(8)->withQueryString();
-        return view('prendas.index', compact('prendas'));
+        $spotlightPrendas = Prenda::where('mostrar_spotlight', true)->where('estado', 'disponible')->latest()->take(6)->get();
+        $muroPrendas = Prenda::where('mostrar_muro', true)->latest()->take(8)->get();
+        return view('prendas.index', compact('prendas', 'spotlightPrendas', 'muroPrendas'));
     }
 
     public function show(Prenda $prenda)
@@ -43,6 +45,10 @@ class PrendaController extends Controller
         if ($request->hasFile('imagen')) {
             $validated['imagen'] = $request->file('imagen')->store('prendas', 'public');
         }
+
+        $validated['mostrar_spotlight'] = $request->has('mostrar_spotlight');
+        $validated['mostrar_catalogo'] = $request->has('mostrar_catalogo');
+        $validated['mostrar_muro'] = $request->has('mostrar_muro');
 
         Prenda::create($validated);
 
@@ -78,6 +84,10 @@ class PrendaController extends Controller
             }
             $validated['imagen'] = $request->file('imagen')->store('prendas', 'public');
         }
+
+        $validated['mostrar_spotlight'] = $request->has('mostrar_spotlight');
+        $validated['mostrar_catalogo'] = $request->has('mostrar_catalogo');
+        $validated['mostrar_muro'] = $request->has('mostrar_muro');
 
         $prenda->update($validated);
 
