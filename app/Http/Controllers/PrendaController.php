@@ -17,6 +17,7 @@ class PrendaController extends Controller
         $prendas = $query->latest()->paginate(8)->withQueryString();
         $spotlightPrendas = Prenda::where('mostrar_spotlight', true)->where('estado', 'disponible')->latest()->take(6)->get();
         $muroPrendas = Prenda::where('mostrar_muro', true)->latest()->take(8)->get();
+
         return view('prendas.index', compact('prendas', 'spotlightPrendas', 'muroPrendas'));
     }
 
@@ -58,6 +59,7 @@ class PrendaController extends Controller
     public function admin()
     {
         $prendas = Prenda::orderBy('created_at', 'desc')->get();
+
         return view('prendas.admin', compact('prendas'));
     }
 

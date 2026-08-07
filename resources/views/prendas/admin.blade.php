@@ -29,16 +29,16 @@
 </head>
 <body class="min-h-screen">
     <header class="border-b border-white/10 bg-[#111210]/90 backdrop-blur-xl">
-        <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
-            <a href="{{ route('prendas.index') }}" class="flex items-center gap-3">
+        <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8 gap-3">
+            <a href="{{ route('prendas.index') }}" class="flex items-center gap-3 flex-shrink-0">
                 <span class="h-3 w-3 rotate-45 bg-[#c8ff00]"></span>
-                <span class="mono font-bold tracking-[-.1em] text-xl text-[#f3f2ec]">URBAN HAUS.</span>
+                <span class="mono font-bold tracking-[-.1em] text-lg md:text-xl text-[#f3f2ec]">URBAN HAUS.</span>
             </a>
-            <div class="flex items-center gap-3">
-                <a href="{{ route('prendas.index') }}" class="line-action rounded-full px-5 py-2.5 text-sm font-bold text-[#f3f2ec]">Ver exhibidor</a>
+            <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+                <a href="{{ route('prendas.index') }}" class="line-action rounded-full px-3 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-bold text-[#f3f2ec]">Ver exhibidor</a>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button type="submit" class="rounded-full border border-red-500/30 bg-red-500/10 px-5 py-2.5 text-sm font-bold text-red-400 transition hover:border-red-500 hover:bg-red-500/20">Cerrar sesión</button>
+                    <button type="submit" class="rounded-full border border-red-500/30 bg-red-500/10 px-3 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-bold text-red-400 transition hover:border-red-500 hover:bg-red-500/20">Cerrar sesión</button>
                 </form>
             </div>
         </nav>
@@ -69,17 +69,18 @@
         @endif
 
         <div class="mt-10 overflow-hidden rounded-2xl border border-white/10 bg-[#1b1d1a]">
-            <table class="desktop-table w-full text-left">
-                <thead class="border-b border-white/10 bg-[#111210]">
-                    <tr>
-                        <th class="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#a5aaa6] px-5 py-4">Imagen</th>
-                        <th class="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#a5aaa6] px-5 py-4">Título</th>
-                        <th class="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#a5aaa6] px-5 py-4">Precio</th>
-                        <th class="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#a5aaa6] px-5 py-4">Talla</th>
-                        <th class="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#a5aaa6] px-5 py-4">Estado</th>
-                        <th class="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#a5aaa6] px-5 py-4 text-right">Acciones</th>
-                    </tr>
-                </thead>
+            <div class="overflow-x-auto">
+                <table class="desktop-table w-full text-left min-w-[640px]">
+                    <thead class="border-b border-white/10 bg-[#111210]">
+                        <tr>
+                            <th class="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#a5aaa6] px-5 py-4">Imagen</th>
+                            <th class="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#a5aaa6] px-5 py-4">Título</th>
+                            <th class="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#a5aaa6] px-5 py-4">Precio</th>
+                            <th class="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#a5aaa6] px-5 py-4">Talla</th>
+                            <th class="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#a5aaa6] px-5 py-4">Estado</th>
+                            <th class="mono text-[10px] font-bold uppercase tracking-[.14em] text-[#a5aaa6] px-5 py-4 text-right">Acciones</th>
+                        </tr>
+                    </thead>
                 <tbody>
                     @forelse($prendas as $prenda)
                     <tr class="table-row border-b border-white/5 last:border-b-0">
@@ -129,6 +130,7 @@
                     @endforelse
                 </tbody>
             </table>
+            </div>
 
             <div class="mobile-cards divide-y divide-white/5">
                 @forelse($prendas as $prenda)

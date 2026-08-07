@@ -22,7 +22,7 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-public function store(LoginRequest $request): RedirectResponse
+    public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
 
@@ -30,6 +30,7 @@ public function store(LoginRequest $request): RedirectResponse
 
         return redirect()->intended(route('prendas.admin'));
     }
+
     /**
      * Destroy an authenticated session.
      */

@@ -17,28 +17,28 @@
 </head>
 <body class="min-h-screen">
     <header class="border-b border-white/10 bg-[#111210]/90 backdrop-blur-xl">
-        <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
-            <a href="{{ route('prendas.admin') }}" class="flex items-center gap-3">
+        <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8 gap-3">
+            <a href="{{ route('prendas.admin') }}" class="flex items-center gap-3 flex-shrink-0">
                 <span class="h-3 w-3 rotate-45 bg-[#c8ff00]"></span>
-                <span class="mono font-bold tracking-[-.1em] text-xl text-[#f3f2ec]">URBAN HAUS.</span>
+                <span class="mono font-bold tracking-[-.1em] text-lg md:text-xl text-[#f3f2ec]">URBAN HAUS.</span>
             </a>
-            <div class="flex items-center gap-3">
-                <a href="{{ route('prendas.admin') }}" class="line-action rounded-full px-5 py-2.5 text-sm font-bold text-[#f3f2ec]">← Panel</a>
+            <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+                <a href="{{ route('prendas.admin') }}" class="line-action rounded-full px-3 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-bold text-[#f3f2ec]">← Panel</a>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button type="submit" class="rounded-full border border-red-500/30 bg-red-500/10 px-5 py-2.5 text-sm font-bold text-red-400 transition hover:border-red-500 hover:bg-red-500/20">Cerrar sesión</button>
+                    <button type="submit" class="rounded-full border border-red-500/30 bg-red-500/10 px-3 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-bold text-red-400 transition hover:border-red-500 hover:bg-red-500/20">Cerrar sesión</button>
                 </form>
             </div>
         </nav>
     </header>
 
-    <main class="mx-auto max-w-2xl px-4 py-10">
-        <div class="mb-10">
+    <main class="mx-auto max-w-2xl px-4 py-6 sm:py-10">
+        <div class="mb-6 sm:mb-10">
             <p class="mono text-xs tracking-[.18em] text-[#c8ff00] font-bold">EDITAR / {{ str_pad($prenda->id, 3, '0', STR_PAD_LEFT) }}</p>
-            <h1 class="mt-3 font-bold uppercase leading-none tracking-[-.06em] text-3xl text-[#f3f2ec] md:text-4xl">Modificar pieza.</h1>
+            <h1 class="mt-3 font-bold uppercase leading-none tracking-[-.06em] text-2xl sm:text-3xl text-[#f3f2ec] md:text-4xl">Modificar pieza.</h1>
         </div>
 
-        <form action="{{ route('prendas.update', $prenda) }}" method="POST" enctype="multipart/form-data" class="space-y-6 bg-[#1b1d1a] p-8 rounded-2xl border border-[#f3f2ec]/10">
+        <form action="{{ route('prendas.update', $prenda) }}" method="POST" enctype="multipart/form-data" class="space-y-6 bg-[#1b1d1a] p-5 sm:p-8 rounded-2xl border border-[#f3f2ec]/10">
             @csrf
             @method('PUT')
 
@@ -174,13 +174,13 @@
                 @enderror
             </div>
 
-            <div class="flex gap-4 pt-4">
+            <div class="flex flex-col gap-4 sm:flex-row pt-4">
                 <button type="submit"
                     class="flex-1 bg-[#c8ff00] text-[#111210] font-bold py-3.5 px-6 rounded hover:bg-[#c8ff00]/90 transition-colors tracking-wider uppercase text-sm mono">
                     Actualizar Prenda
                 </button>
                 <a href="{{ route('prendas.admin') }}"
-                    class="px-6 py-3.5 border border-[#f3f2ec]/20 text-[#f3f2ec]/70 rounded hover:border-[#c8ff00] hover:text-[#c8ff00] transition-colors text-sm uppercase tracking-wider mono">
+                    class="flex-1 sm:flex-none px-6 py-3.5 border border-[#f3f2ec]/20 text-[#f3f2ec]/70 rounded hover:border-[#c8ff00] hover:text-[#c8ff00] transition-colors text-sm uppercase tracking-wider mono text-center">
                     Cancelar
                 </a>
             </div>

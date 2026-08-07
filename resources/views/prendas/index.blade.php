@@ -41,10 +41,10 @@
 </head>
 <body class="w-full overflow-x-hidden" style="background: rgb(17, 18, 16);">
   <header class="sticky top-0 z-40 border-b border-white/10 bg-[#111210]/90 backdrop-blur-xl">
-    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8" aria-label="Navegación principal">
-      <a href="#inicio" class="flex items-center gap-3">
-        <span class="h-3 w-3 rotate-45 bg-[#c8ff00]"></span>
-        <span class="mono font-bold tracking-[-.1em] text-xl text-[#f3f2ec]">URBAN HAUS.</span>
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-5 py-3 sm:py-4 md:px-8" aria-label="Navegación principal">
+      <a href="#inicio" class="flex items-center gap-2 sm:gap-3">
+        <span class="h-2.5 w-2.5 sm:h-3 sm:w-3 rotate-45 bg-[#c8ff00]"></span>
+        <span class="mono font-bold tracking-[-.1em] text-lg sm:text-xl text-[#f3f2ec]">URBAN HAUS.</span>
       </a>
       <div class="desktop-nav flex items-center gap-7">
         <a class="text-sm text-white/70 transition hover:text-[#c8ff00]" href="#spotlight">Spotlight</a>
@@ -56,8 +56,8 @@
         @endauth
         <a class="lime-action rounded-full px-5 py-2.5 text-sm font-bold" href="#coleccion">Ver piezas</a>
       </div>
-      <button id="menu-toggle" class="mobile-toggle rounded-full border border-white/20 p-2" type="button" aria-label="Abrir menú">
-        <i data-lucide="menu" class="h-5 w-5"></i>
+      <button id="menu-toggle" class="mobile-toggle rounded-full border border-white/20 p-1.5 sm:p-2" type="button" aria-label="Abrir menú">
+        <i data-lucide="menu" class="h-4 w-4 sm:h-5 sm:w-5"></i>
       </button>
     </nav>
     <div id="mobile-menu" class="mobile-menu hidden border-t border-white/10 px-5 py-5">
@@ -242,9 +242,9 @@
   </main>
 
   <!-- Footer -->
-  <footer id="contacto" class="border-t border-zinc-800 px-5 py-16 md:px-8 bg-[#111210]">
+  <footer id="contacto" class="border-t border-zinc-800 px-4 sm:px-5 py-10 sm:py-16 md:px-8 bg-[#111210]">
     <div class="mx-auto max-w-7xl">
-      <div class="grid grid-cols-1 gap-12 md:grid-cols-3">
+      <div class="grid grid-cols-1 gap-8 sm:gap-12 md:grid-cols-3">
         <div>
           <p class="mono font-bold tracking-[-.1em] text-xl text-[#f3f2ec]">URBAN HAUS.</p>
           <p class="mt-4 max-w-sm text-sm leading-relaxed text-gray-400">Un archivo de streetwear pensado desde Cali para quienes entienden la ropa como lenguaje, movimiento y memoria.</p>

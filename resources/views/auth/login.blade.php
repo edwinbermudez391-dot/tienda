@@ -23,7 +23,7 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
-        <div class="flex items-center justify-between">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" name="remember"
                     class="rounded border-[#f3f2ec]/20 bg-[#111210] text-[#c8ff00] shadow-sm focus:ring-[#c8ff00]/50">

@@ -10,16 +10,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body class="bg-[#111210] min-h-screen text-[#f3f2ec]">
-    <div class="container mx-auto px-4 py-10 max-w-2xl">
-        <div class="mb-10">
-            <h1 class="text-4xl font-bold text-[#c8ff00] tracking-widest" style="font-family: 'Space Mono', monospace;">URBAN HAUS</h1>
+    <div class="container mx-auto px-4 py-6 sm:py-10 max-w-2xl">
+        <div class="mb-6 sm:mb-10">
+            <h1 class="text-2xl sm:text-4xl font-bold text-[#c8ff00] tracking-widest" style="font-family: 'Space Mono', monospace;">URBAN HAUS</h1>
             <div class="mt-3 flex items-center gap-3">
                 <span class="h-px w-10 bg-[#c8ff00]/40"></span>
-                <p class="text-sm tracking-wider text-[#f3f2ec]/60 uppercase" style="font-family: 'Space Mono', monospace;">Registrar Nueva Prenda</p>
+                <p class="text-xs sm:text-sm tracking-wider text-[#f3f2ec]/60 uppercase" style="font-family: 'Space Mono', monospace;">Registrar Nueva Prenda</p>
             </div>
         </div>
 
-        <form action="{{ route('prendas.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6 bg-[#1b1d1a] p-8 rounded-lg border border-[#f3f2ec]/10">
+        <form action="{{ route('prendas.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6 bg-[#1b1d1a] p-5 sm:p-8 rounded-lg border border-[#f3f2ec]/10">
             @csrf
 
             <div>
@@ -177,7 +177,7 @@
                 @enderror
             </div>
 
-            <div class="flex gap-4 pt-4">
+            <div class="flex flex-col gap-4 sm:flex-row pt-4">
                 <button
                     type="submit"
                     class="flex-1 bg-[#c8ff00] text-[#111210] font-bold py-3.5 px-6 rounded hover:bg-[#c8ff00]/90 transition-colors tracking-wider uppercase text-sm"
@@ -187,7 +187,7 @@
                 </button>
                 <a
                     href="{{ route('prendas.admin') }}"
-                    class="px-6 py-3.5 border border-[#f3f2ec]/20 text-[#f3f2ec]/70 rounded hover:border-[#c8ff00] hover:text-[#c8ff00] transition-colors text-sm uppercase tracking-wider"
+                    class="flex-1 sm:flex-none px-6 py-3.5 border border-[#f3f2ec]/20 text-[#f3f2ec]/70 rounded hover:border-[#c8ff00] hover:text-[#c8ff00] transition-colors text-sm uppercase tracking-wider text-center"
                     style="font-family: 'Space Mono', monospace;"
                 >
                     Cancelar
