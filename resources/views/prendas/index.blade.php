@@ -9,9 +9,10 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
   <style>
     :root { --ink:#111210; --panel:#1b1d1a; --paper:#f3f2ec; --silver:#a5aaa6; --lime:#c8ff00; }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; width:100%; font-family:"DM Sans",sans-serif; color:var(--paper); background:var(--ink); }
+    * { box-sizing:border-box; max-width:100%; }
+    .ticker { max-width:none; }
+    html { scroll-behavior:smooth; overflow-x:hidden; }
+    body { margin:0; width:100%; font-family:"DM Sans",sans-serif; color:var(--paper); background:var(--ink); overflow-x:hidden; }
     .mono { font-family:"Space Mono",monospace; }
     .grid-surface { background-image:linear-gradient(rgba(200,255,0,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(200,255,0,.05) 1px,transparent 1px); background-size:42px 42px; }
     .glass { background:rgba(27,29,26,.76); border:1px solid rgba(243,242,236,.13); backdrop-filter:blur(18px); }
@@ -40,7 +41,7 @@
   </style>
 </head>
 <body class="w-full overflow-x-hidden" style="background: rgb(17, 18, 16);">
-  <header class="sticky top-0 z-40 border-b border-white/10 bg-[#111210]/90 backdrop-blur-xl">
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-[#111210]/90 backdrop-blur-xl overflow-hidden">
     <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-5 py-3 sm:py-4 md:px-8" aria-label="Navegación principal">
       <a href="#inicio" class="flex items-center gap-2 sm:gap-3">
         <span class="h-2.5 w-2.5 sm:h-3 sm:w-3 rotate-45 bg-[#c8ff00]"></span>
@@ -91,7 +92,7 @@
     <section id="inicio" class="grid-surface relative min-h-[calc(82*min(var(--vh,1vh),1vh))] overflow-hidden">
       <img loading="lazy" class="absolute inset-y-0 right-0 h-full w-full object-cover opacity-55 md:w-[62%]" src="https://images.pexels.com/photos/4903412/pexels-photo-4903412.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1920" alt="Interior tienda urbana">
       <div class="absolute inset-0 bg-gradient-to-r from-[#111210] via-[#111210]/90 to-[#111210]/10"></div>
-      <div class="relative mx-auto flex min-h-[calc(82*min(var(--vh,1vh),1vh))] max-w-7xl items-end px-4 sm:px-5 pb-12 sm:pb-16 pt-20 sm:pt-24 md:items-center md:px-8">
+      <div class="relative mx-auto flex min-h-[calc(82*min(var(--vh,1vh),1vh))] max-w-7xl items-end px-4 sm:px-5 pb-12 sm:pb-16 pt-20 sm:pt-24 md:items-center md:px-8 overflow-hidden">
         <div class="max-w-3xl">
           <p class="mono entry text-xs tracking-[.2em] text-[#c8ff00] font-bold">EXPOSICIÓN 04 / BOGOTÁ · 2026</p>
           <h1 class="entry mt-5 font-bold uppercase leading-[.84] tracking-[-.07em] text-4xl md:text-6xl text-[#f3f2ec]">LA CIUDAD VISTE EN CAPAS.</h1>
@@ -104,7 +105,7 @@
     </section>
 
     <!-- Ticker Section -->
-    <section class="overflow-hidden border-y border-white/10 bg-[#c8ff00] py-3 text-[#111210]">
+    <section class="relative overflow-hidden border-y border-white/10 bg-[#c8ff00] py-3 text-[#111210]">
       <div class="ticker flex w-max gap-9 whitespace-nowrap mono text-xs font-bold tracking-[.14em]">
         <span>PIEZAS PARA EL MOVIMIENTO</span><span>✦</span>
         <span>FORMA / FUNCIÓN / FRICCIÓN</span><span>✦</span>
@@ -214,7 +215,7 @@
 
     <!-- Muro de Estilo Section -->
     <section id="muro" class="border-t border-white/10 px-4 sm:px-5 py-16 sm:py-20 md:px-8 md:py-28">
-      <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-7xl overflow-hidden">
         <div class="flex flex-col justify-between gap-7 md:flex-row md:items-end">
           <div>
             <p class="mono text-xs tracking-[.18em] text-[#c8ff00] font-bold">03 / MURO DE ESTILO</p>
@@ -242,7 +243,7 @@
   </main>
 
   <!-- Footer -->
-  <footer id="contacto" class="border-t border-zinc-800 px-4 sm:px-5 py-10 sm:py-16 md:px-8 bg-[#111210]">
+  <footer id="contacto" class="border-t border-zinc-800 px-4 sm:px-5 py-10 sm:py-16 md:px-8 bg-[#111210] overflow-hidden">
     <div class="mx-auto max-w-7xl">
       <div class="grid grid-cols-1 gap-8 sm:gap-12 md:grid-cols-3">
         <div>
