@@ -44,7 +44,7 @@ class PrendaController extends Controller
         ]);
 
         if ($request->hasFile('imagen')) {
-            $validated['imagen'] = $request->file('imagen')->store('prendas', 'public');
+            $validated['imagen'] = $request->file('imagen')->store('prendas', 's3');
         }
 
         $validated['mostrar_spotlight'] = $request->has('mostrar_spotlight');
@@ -82,9 +82,9 @@ class PrendaController extends Controller
 
         if ($request->hasFile('imagen')) {
             if ($prenda->imagen) {
-                Storage::disk('public')->delete($prenda->imagen);
+                Storage::disk('s3')->delete($prenda->imagen);
             }
-            $validated['imagen'] = $request->file('imagen')->store('prendas', 'public');
+            $validated['imagen'] = $request->file('imagen')->store('prendas', 's3');
         }
 
         $validated['mostrar_spotlight'] = $request->has('mostrar_spotlight');
@@ -99,7 +99,7 @@ class PrendaController extends Controller
     public function destroy(Prenda $prenda)
     {
         if ($prenda->imagen) {
-            Storage::disk('public')->delete($prenda->imagen);
+            Storage::disk('s3')->delete($prenda->imagen);
         }
 
         $prenda->delete();
