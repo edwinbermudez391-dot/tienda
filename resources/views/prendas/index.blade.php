@@ -37,7 +37,55 @@
     .style-wall::-webkit-scrollbar-thumb:hover { background:#c8ff00; }
     .style-frame { scroll-snap-align:center; }
     @media (max-width:767px) { .desktop-nav { display:none; } }
-    @media (min-width:768px) { .mobile-toggle,.mobile-menu { display:none; } }
+    @media (min-width:768px) { .mobile-toggle,.mobile-drawer,.drawer-overlay { display:none; } }
+    
+    /* Drawer Mobile Styles */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 49;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .drawer-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 85%;
+      max-width: 320px;
+      background: #1b1d1a;
+      border-left: 1px solid rgba(243, 242, 236, 0.1);
+      z-index: 50;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+    }
+    .mobile-drawer.active {
+      transform: translateX(0);
+    }
+    .drawer-link {
+      display: block;
+      padding: 1rem 1.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #f3f2ec;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(243, 242, 236, 0.05);
+      transition: all 0.2s ease;
+    }
+    .drawer-link:hover {
+      background: rgba(200, 255, 0, 0.08);
+      color: #c8ff00;
+      padding-left: 2rem;
+    }
   </style>
 </head>
 <body class="w-full overflow-x-hidden" style="background: rgb(17, 18, 16);">
@@ -61,18 +109,50 @@
         <i data-lucide="menu" class="h-4 w-4 sm:h-5 sm:w-5"></i>
       </button>
     </nav>
-    <div id="mobile-menu" class="mobile-menu hidden border-t border-white/10 px-5 py-5">
-      <div class="flex flex-col gap-4">
-        <a class="text-sm text-[#f3f2ec]" href="#spotlight">Spotlight</a>
-        <a class="text-sm text-[#f3f2ec]" href="#coleccion">Exposición</a>
-        <a class="text-sm text-[#f3f2ec]" href="#muro">Muro de estilo</a>
-        <a class="text-sm text-[#f3f2ec]" href="#contacto">Contacto</a>
-        @auth
-        <a class="text-sm text-[#c8ff00] border border-[#c8ff00] px-4 py-1 rounded-full w-fit transition hover:bg-[#c8ff00] hover:text-[#111210]" href="{{ route('prendas.admin') }}">Panel Admin</a>
-        @endauth
-      </div>
-    </div>
   </header>
+
+  <!-- Drawer Overlay -->
+  <div id="drawer-overlay" class="drawer-overlay"></div>
+
+  <!-- Mobile Drawer -->
+  <div id="mobile-drawer" class="mobile-drawer">
+    <div class="flex items-center justify-between border-b border-white/10 px-5 py-4">
+      <div class="flex items-center gap-2">
+        <span class="h-2.5 w-2.5 rotate-45 bg-[#c8ff00]"></span>
+        <span class="mono font-bold tracking-[-.1em] text-lg text-[#f3f2ec]">URBAN HAUS.</span>
+      </div>
+      <button id="drawer-close" class="rounded-full border border-white/20 p-2 transition hover:border-[#c8ff00] hover:bg-[#c8ff00]/10" aria-label="Cerrar menú">
+        <i data-lucide="x" class="h-4 w-4 text-[#f3f2ec]"></i>
+      </button>
+    </div>
+    <nav class="flex flex-col py-4">
+      <a class="drawer-link" href="#spotlight">
+        <span class="mono text-[10px] tracking-[.18em] text-[#c8ff00] font-bold block mb-1">01</span>
+        Spotlight
+      </a>
+      <a class="drawer-link" href="#coleccion">
+        <span class="mono text-[10px] tracking-[.18em] text-[#c8ff00] font-bold block mb-1">02</span>
+        Exposición
+      </a>
+      <a class="drawer-link" href="#muro">
+        <span class="mono text-[10px] tracking-[.18em] text-[#c8ff00] font-bold block mb-1">03</span>
+        Muro de Estilo
+      </a>
+      <a class="drawer-link" href="#contacto">
+        <span class="mono text-[10px] tracking-[.18em] text-[#c8ff00] font-bold block mb-1">04</span>
+        Contacto
+      </a>
+      @auth
+      <a class="drawer-link" href="{{ route('prendas.admin') }}">
+        <span class="mono text-[10px] tracking-[.18em] text-[#c8ff00] font-bold block mb-1">ADMIN</span>
+        Panel de Control
+      </a>
+      @endauth
+    </nav>
+    <div class="px-5 py-6 border-t border-white/10">
+      <a class="lime-action block rounded-full px-5 py-3 text-sm font-bold text-center" href="#coleccion">Ver piezas</a>
+    </div>
+  </div>
 
   <main class="w-full overflow-x-hidden">
     @if(session('success'))
@@ -92,13 +172,13 @@
     <section id="inicio" class="grid-surface relative min-h-[calc(82*min(var(--vh,1vh),1vh))] overflow-hidden">
       <img loading="lazy" class="absolute inset-y-0 right-0 h-full w-full object-cover opacity-55 md:w-[62%]" src="https://images.pexels.com/photos/4903412/pexels-photo-4903412.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1920" alt="Interior tienda urbana">
       <div class="absolute inset-0 bg-gradient-to-r from-[#111210] via-[#111210]/90 to-[#111210]/10"></div>
-      <div class="relative mx-auto flex min-h-[calc(82*min(var(--vh,1vh),1vh))] max-w-7xl items-end px-4 sm:px-5 pb-12 sm:pb-16 pt-20 sm:pt-24 md:items-center md:px-8 overflow-hidden">
+      <div class="relative mx-auto flex min-h-[calc(82*min(var(--vh,1vh),1vh))] max-w-7xl items-end px-5 sm:px-6 md:px-8 pb-12 sm:pb-16 pt-20 sm:pt-24 md:items-center overflow-hidden">
         <div class="max-w-3xl">
           <p class="mono entry text-xs tracking-[.2em] text-[#c8ff00] font-bold">EXPOSICIÓN 04 / BOGOTÁ · 2026</p>
-          <h1 class="entry mt-5 font-bold uppercase leading-[.84] tracking-[-.07em] text-4xl md:text-6xl text-[#f3f2ec]">LA CIUDAD VISTE EN CAPAS.</h1>
-          <p class="entry mt-7 max-w-xl leading-relaxed text-white/70 md:text-lg">Una selección de siluetas, texturas y señales para recorrer la ciudad sin seguir el mismo mapa. Archivo vivo de lo que se mueve afuera.</p>
-          <div class="entry mt-9 flex flex-wrap gap-3">
-            <a class="lime-action rounded-full px-6 py-3.5 text-sm font-bold" href="#coleccion">Explorar exposición</a>
+          <h1 class="entry mt-5 font-bold uppercase leading-[.84] tracking-[-.07em] text-3xl sm:text-4xl md:text-6xl text-[#f3f2ec]">LA CIUDAD VISTE EN CAPAS.</h1>
+          <p class="entry mt-6 sm:mt-7 max-w-xl leading-relaxed text-white/70 md:text-lg">Una selección de siluetas, texturas y señales para recorrer la ciudad sin seguir el mismo mapa. Archivo vivo de lo que se mueve afuera.</p>
+          <div class="entry mt-8 sm:mt-9 flex flex-wrap gap-3">
+            <a class="lime-action rounded-full px-5 sm:px-6 py-3 sm:py-3.5 text-sm font-bold" href="#coleccion">Explorar exposición</a>
           </div>
         </div>
       </div>
@@ -115,12 +195,12 @@
     </section>
 
     <!-- Spotlight Section - Featured Pieces -->
-    <section id="spotlight" class="border-t border-white/10 bg-[#111210] px-4 sm:px-5 py-16 sm:py-20 md:px-8 md:py-28">
+    <section id="spotlight" class="border-t border-white/10 bg-[#111210] px-5 sm:px-6 py-16 sm:py-20 md:px-8 md:py-28">
       <div class="mx-auto max-w-7xl">
-        <div class="flex flex-col justify-between gap-7 md:flex-row md:items-end">
+        <div class="flex flex-col justify-between gap-6 sm:gap-7 md:flex-row md:items-end">
           <div>
             <p class="mono text-xs tracking-[.18em] text-[#c8ff00] font-bold">01 / SPOTLIGHT</p>
-            <h2 class="mt-3 font-bold uppercase leading-none tracking-[-.06em] text-3xl text-[#f3f2ec] md:text-4xl">Piezas destacadas.</h2>
+            <h2 class="mt-3 font-bold uppercase leading-none tracking-[-.06em] text-2xl sm:text-3xl text-[#f3f2ec] md:text-4xl">Piezas destacadas.</h2>
           </div>
           <p class="max-w-md leading-relaxed text-[#a5aaa6]">Selección curatorial de las piezas más icónicas de la colección. Ediciones limitadas y exclusivos del archivo.</p>
         </div>
@@ -155,11 +235,11 @@
     </section>
 
     <!-- Dinamic Catalog Section (Conectado a la Base de Datos Laravel) -->
-    <section id="coleccion" class="border-t border-white/10 mx-auto max-w-7xl px-4 sm:px-5 py-16 sm:py-20 md:px-8 md:py-28">
-      <div class="flex flex-col justify-between gap-7 md:flex-row md:items-end">
+    <section id="coleccion" class="border-t border-white/10 mx-auto max-w-7xl px-5 sm:px-6 py-16 sm:py-20 md:px-8 md:py-28">
+      <div class="flex flex-col justify-between gap-6 sm:gap-7 md:flex-row md:items-end">
         <div>
           <p class="mono text-xs tracking-[.18em] text-[#c8ff00] font-bold">02 / CATÁLOGO CURATORIAL</p>
-          <h2 class="mt-3 font-bold uppercase leading-none tracking-[-.06em] text-3xl text-[#f3f2ec]">Piezas en tránsito.</h2>
+          <h2 class="mt-3 font-bold uppercase leading-none tracking-[-.06em] text-2xl sm:text-3xl text-[#f3f2ec]">Piezas en tránsito.</h2>
         </div>
         <p class="max-w-md leading-relaxed text-[#a5aaa6]">Cada prenda aparece aquí como un fragmento de ciudad: diseñada para combinar y tensionar a tu manera.</p>
       </div>
@@ -214,12 +294,12 @@
     </section>
 
     <!-- Muro de Estilo Section -->
-    <section id="muro" class="border-t border-white/10 px-4 sm:px-5 py-16 sm:py-20 md:px-8 md:py-28">
+    <section id="muro" class="border-t border-white/10 px-5 sm:px-6 py-16 sm:py-20 md:px-8 md:py-28">
       <div class="mx-auto max-w-7xl overflow-hidden">
-        <div class="flex flex-col justify-between gap-7 md:flex-row md:items-end">
+        <div class="flex flex-col justify-between gap-6 sm:gap-7 md:flex-row md:items-end">
           <div>
             <p class="mono text-xs tracking-[.18em] text-[#c8ff00] font-bold">03 / MURO DE ESTILO</p>
-            <h2 class="mt-3 font-bold uppercase leading-none tracking-[-.06em] text-3xl text-[#f3f2ec]">La calle como pasarela.</h2>
+            <h2 class="mt-3 font-bold uppercase leading-none tracking-[-.06em] text-2xl sm:text-3xl text-[#f3f2ec]">La calle como pasarela.</h2>
           </div>
           <p class="max-w-md leading-relaxed text-[#a5aaa6]">Inspiración directa del street style. Looks que definen la actitud urbana contemporánea.</p>
         </div>
@@ -243,9 +323,9 @@
   </main>
 
   <!-- Footer -->
-  <footer id="contacto" class="border-t border-zinc-800 px-4 sm:px-5 py-10 sm:py-16 md:px-8 bg-[#111210] overflow-hidden">
+  <footer id="contacto" class="border-t border-zinc-800 px-5 sm:px-6 py-10 sm:py-16 md:px-8 bg-[#111210] overflow-hidden">
     <div class="mx-auto max-w-7xl">
-      <div class="grid grid-cols-1 gap-8 sm:gap-12 md:grid-cols-3">
+      <div class="grid grid-cols-1 gap-8 sm:gap-10 md:grid-cols-3">
         <div>
           <p class="mono font-bold tracking-[-.1em] text-xl text-[#f3f2ec]">URBAN HAUS.</p>
           <p class="mt-4 max-w-sm text-sm leading-relaxed text-gray-400">Un archivo de streetwear pensado desde Cali para quienes entienden la ropa como lenguaje, movimiento y memoria.</p>
@@ -294,18 +374,34 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
+      
+      // Drawer Mobile Logic
       const toggle = document.getElementById('menu-toggle');
-      const menu = document.getElementById('mobile-menu');
-      toggle.addEventListener('click', () => {
-        const isOpen = menu.classList.toggle('hidden') === false;
-        toggle.setAttribute('aria-expanded', String(isOpen));
-      });
-
-      // Cerrar menú móvil al hacer clic en un enlace
-      menu.querySelectorAll('a').forEach(link => {
+      const drawer = document.getElementById('mobile-drawer');
+      const overlay = document.getElementById('drawer-overlay');
+      const closeBtn = document.getElementById('drawer-close');
+      
+      function openDrawer() {
+        drawer.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        lucide.createIcons();
+      }
+      
+      function closeDrawer() {
+        drawer.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+      
+      toggle.addEventListener('click', openDrawer);
+      closeBtn.addEventListener('click', closeDrawer);
+      overlay.addEventListener('click', closeDrawer);
+      
+      // Cerrar drawer al hacer clic en un enlace
+      drawer.querySelectorAll('.drawer-link').forEach(link => {
         link.addEventListener('click', () => {
-          menu.classList.add('hidden');
-          toggle.setAttribute('aria-expanded', 'false');
+          closeDrawer();
         });
       });
 
