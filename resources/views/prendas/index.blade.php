@@ -73,9 +73,9 @@
     </div>
   </header>
 
-  <main>
+  <main class="w-full overflow-x-hidden">
     @if(session('success'))
-    <div id="flash-alert" class="fixed top-20 left-1/2 z-50 flex -translate-x-1/2 items-center gap-3 rounded-lg border border-[#c8ff00]/30 bg-[#1b1d1a] px-5 py-4 shadow-lg shadow-[#c8ff00]/5 transition-opacity duration-500">
+    <div id="flash-alert" class="fixed top-20 left-1/2 z-50 flex w-[90vw] max-w-md -translate-x-1/2 items-center gap-3 rounded-lg border border-[#c8ff00]/30 bg-[#1b1d1a] px-4 sm:px-5 py-4 shadow-lg shadow-[#c8ff00]/5 transition-opacity duration-500">
       <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#c8ff00] text-[#111210]">
         <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
       </span>
@@ -91,7 +91,7 @@
     <section id="inicio" class="grid-surface relative min-h-[calc(82*min(var(--vh,1vh),1vh))] overflow-hidden">
       <img loading="lazy" class="absolute inset-y-0 right-0 h-full w-full object-cover opacity-55 md:w-[62%]" src="https://images.pexels.com/photos/4903412/pexels-photo-4903412.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1920" alt="Interior tienda urbana">
       <div class="absolute inset-0 bg-gradient-to-r from-[#111210] via-[#111210]/90 to-[#111210]/10"></div>
-      <div class="relative mx-auto flex min-h-[calc(82*min(var(--vh,1vh),1vh))] max-w-7xl items-end px-5 pb-16 pt-24 md:items-center md:px-8">
+      <div class="relative mx-auto flex min-h-[calc(82*min(var(--vh,1vh),1vh))] max-w-7xl items-end px-4 sm:px-5 pb-12 sm:pb-16 pt-20 sm:pt-24 md:items-center md:px-8">
         <div class="max-w-3xl">
           <p class="mono entry text-xs tracking-[.2em] text-[#c8ff00] font-bold">EXPOSICIÓN 04 / BOGOTÁ · 2026</p>
           <h1 class="entry mt-5 font-bold uppercase leading-[.84] tracking-[-.07em] text-4xl md:text-6xl text-[#f3f2ec]">LA CIUDAD VISTE EN CAPAS.</h1>
@@ -114,7 +114,7 @@
     </section>
 
     <!-- Spotlight Section - Featured Pieces -->
-    <section id="spotlight" class="border-t border-white/10 bg-[#111210] px-5 py-20 md:px-8 md:py-28">
+    <section id="spotlight" class="border-t border-white/10 bg-[#111210] px-4 sm:px-5 py-16 sm:py-20 md:px-8 md:py-28">
       <div class="mx-auto max-w-7xl">
         <div class="flex flex-col justify-between gap-7 md:flex-row md:items-end">
           <div>
@@ -154,7 +154,7 @@
     </section>
 
     <!-- Dinamic Catalog Section (Conectado a la Base de Datos Laravel) -->
-    <section id="coleccion" class="border-t border-white/10 mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+    <section id="coleccion" class="border-t border-white/10 mx-auto max-w-7xl px-4 sm:px-5 py-16 sm:py-20 md:px-8 md:py-28">
       <div class="flex flex-col justify-between gap-7 md:flex-row md:items-end">
         <div>
           <p class="mono text-xs tracking-[.18em] text-[#c8ff00] font-bold">02 / CATÁLOGO CURATORIAL</p>
@@ -213,7 +213,7 @@
     </section>
 
     <!-- Muro de Estilo Section -->
-    <section id="muro" class="border-t border-white/10 px-5 py-20 md:px-8 md:py-28">
+    <section id="muro" class="border-t border-white/10 px-4 sm:px-5 py-16 sm:py-20 md:px-8 md:py-28">
       <div class="mx-auto max-w-7xl">
         <div class="flex flex-col justify-between gap-7 md:flex-row md:items-end">
           <div>
@@ -298,6 +298,14 @@
       toggle.addEventListener('click', () => {
         const isOpen = menu.classList.toggle('hidden') === false;
         toggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      // Cerrar menú móvil al hacer clic en un enlace
+      menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          menu.classList.add('hidden');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
       });
 
       // AJAX Navigation for catalog
