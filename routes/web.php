@@ -3,6 +3,7 @@
 use App\Http\Controllers\PrendaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 Route::get('/', [PrendaController::class, 'index'])->name('prendas.index');
 Route::get('/prendas/{prenda}', [PrendaController::class, 'show'])->name('prendas.show');
@@ -24,6 +25,15 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/prendas/{prenda}/edit', [PrendaController::class, 'edit'])->name('prendas.edit');
     Route::match(['put', 'patch'], '/prendas/{prenda}', [PrendaController::class, 'update'])->name('prendas.update');
     Route::delete('/prendas/{prenda}', [PrendaController::class, 'destroy'])->name('prendas.destroy');
+});
+
+Route::get('/ejecutar-seeders', function () {
+    try {
+        Artisan::call('db:seed', ['--force' => true]);
+        return '¡Base de datos poblada con éxito! Ya puedes eliminar esta ruta.';
+    } catch (\Exception $e) {
+        return 'Error: ' . $e->getMessage();
+    }
 });
 
 require __DIR__.'/auth.php';
