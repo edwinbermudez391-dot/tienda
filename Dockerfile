@@ -33,16 +33,13 @@ WORKDIR /var/www/html
 # 7. Copiar todos los archivos de tu proyecto al servidor
 COPY . .
 
-# 8. Instalar todas las dependencias y compilar el diseño oscuro
-RUN composer install --optimize-autoloader --no-dev
+# 8. Instalar dependencias sin ejecutar scripts automáticos (evita errores si faltan credenciales en el build)
+RUN composer install --optimize-autoloader --no-dev --no-scripts
+
+# 9. Compilar el diseño con Node.js
 RUN npm install
 RUN npm run build
 
-# 9. Crear el enlace simbólico del storage para que las imágenes sean accesibles
+# 10. Crear el enlace simbólico del storage y dar permisos de seguridad
 RUN php artisan storage:link
-
-# 10. Dar permisos de seguridad a las carpetas de Laravel
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-
-# Generar enlace simbólico y cachear configuraciones para producción
-RUN php artisan storage:link
