@@ -6,4 +6,4 @@ WORKDIR /app
 COPY . .
 RUN composer install --optimize-autoloader --no-dev
 RUN npm install && npm run build
-CMD php artisan serve --host=0.0.0.0 --port=${PORT:-10000}
+CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT:-10000}
