@@ -1,0 +1,298 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Prenda;
+use Illuminate\Database\Seeder;
+
+class PrendaSeeder extends Seeder
+{
+    public function run(): void
+    {
+        $prendas = [
+            // HOODIES (6 productos)
+            [
+                'titulo' => 'Hoodie Oversize Urban Shadow',
+                'descripcion' => 'Hoodie oversize en algodón premium 400gsm. Corte relajado con capucha doble y bolsillo canguro. Perfecto para looks urbanos con actitud.',
+                'precio' => 189000,
+                'talla' => 'M',
+                'categoria' => 'Hoodies',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Hoodie Classic Black Edition',
+                'descripcion' => 'Hoodie clásico en negro profundo. Tejido french terry interior, puños y cintura acanalados. Básico esencial para cualquier guardarropa urbano.',
+                'precio' => 165000,
+                'talla' => 'L',
+                'categoria' => 'Hoodies',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1578768079470-0a4536e2b2c3?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Hoodie Techwear Futuristic',
+                'descripcion' => 'Hoodie técnico con detalles reflectivos y corte asimétrico. Tejido impermeable ligero. Diseño vanguardista para la ciudad del futuro.',
+                'precio' => 245000,
+                'talla' => 'M',
+                'categoria' => 'Hoodies',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Hoodie Vintage Washed Grey',
+                'descripcion' => 'Hoodie con lavado vintage en gris desgastado. Suave al tacto con interior afelpado. Estética retro con comodidad moderna.',
+                'precio' => 175000,
+                'talla' => 'S',
+                'categoria' => 'Hoodies',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1614975059251-992f11792571?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Hoodie Zip-Up Street Style',
+                'descripcion' => 'Hoodie con cremallera completa y capucha ajustable. Bolsillos laterales con cierre. Ideal para capas y looks deportivos urbanos.',
+                'precio' => 195000,
+                'talla' => 'L',
+                'categoria' => 'Hoodies',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Hoodie Minimal Logo',
+                'descripcion' => 'Hoodie minimalista con logo bordado discreto. Algodón orgánico certificado. Diseño limpio para quienes prefieren la sutileza.',
+                'precio' => 185000,
+                'talla' => 'M',
+                'categoria' => 'Hoodies',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&q=80',
+            ],
+
+            // CAMISETAS (7 productos)
+            [
+                'titulo' => 'Camiseta Oversize Graphic Tee',
+                'descripcion' => 'Camiseta oversize con estampado gráfico exclusivo. Algodón 100% de 220gsm. Corte boxy para máximo estilo streetwear.',
+                'precio' => 89000,
+                'talla' => 'L',
+                'categoria' => 'Camisetas',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Camiseta Basic Essential White',
+                'descripcion' => 'Camiseta básica blanca de corte regular. Algodón pima premium. La pieza fundamental que todo urbano necesita.',
+                'precio' => 65000,
+                'talla' => 'M',
+                'categoria' => 'Camisetas',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Camiseta Vintage Bootleg Rap Tee',
+                'descripcion' => 'Camiseta estilo bootleg de los 90s con estampado all-over. Efecto vintage lavado. Para los amantes de la era dorada del hip-hop.',
+                'precio' => 95000,
+                'talla' => 'L',
+                'categoria' => 'Camisetas',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Camiseta Longline Tech',
+                'descripcion' => 'Camiseta longline con tejido técnico transpirable. Costuras selladas y detalles reflectivos. Funcionalidad meets estilo urbano.',
+                'precio' => 110000,
+                'talla' => 'M',
+                'categoria' => 'Camisetas',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1562157873-818bc07268b8?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Camiseta Tie-Dye Psychedelic',
+                'descripcion' => 'Camiseta con tie-dye artesanal único. Cada pieza es diferente. Colores vibrantes en algodón suave. Expresión pura del streetwear.',
+                'precio' => 98000,
+                'talla' => 'S',
+                'categoria' => 'Camisetas',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1529374255404-311a2a4b1fd9?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Camiseta Pocket Tee Minimal',
+                'descripcion' => 'Camiseta con bolsillo en el pecho. Diseño minimalista y corte moderno. Versatilidad para looks casuales o semi-formales.',
+                'precio' => 75000,
+                'talla' => 'M',
+                'categoria' => 'Camisetas',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Camiseta Mesh Transparent',
+                'descripcion' => 'Camiseta de mesh transparente con estampado. Diseño vanguardista para capas. Atrévete con algo diferente y audaz.',
+                'precio' => 85000,
+                'talla' => 'L',
+                'categoria' => 'Camisetas',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&q=80',
+            ],
+
+            // PANTALONES (6 productos)
+            [
+                'titulo' => 'Jogger Cargo Tech Pants',
+                'descripcion' => 'Jogger cargo con múltiples bolsillos utilitarios. Tejido ripstop resistente. Puños elásticos y ajuste perfecto. Funcionalidad urbana.',
+                'precio' => 165000,
+                'talla' => 'M',
+                'categoria' => 'Pantalones',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Pantalón Wide Leg Denim',
+                'descripcion' => 'Jean wide leg en denim rígido 14oz. Corte relajado de los 90s. Lavado medio clásico. Statement piece para cualquier outfit.',
+                'precio' => 195000,
+                'talla' => 'L',
+                'categoria' => 'Pantalones',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1541099649105-f69ad21f5120?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Pantalón Parachute Y2K',
+                'descripcion' => 'Pantalón parachute estilo Y2K con cordón ajustable. Tejido nylon ligero. Look retro-futurista que marca tendencia.',
+                'precio' => 155000,
+                'talla' => 'M',
+                'categoria' => 'Pantalones',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1594633312681-425c7b9dccd1?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Jogger Essential Comfort',
+                'descripcion' => 'Jogger de algodón french terry ultra suave. Puños acanalados y cintura elástica. Comodidad premium para el día a día urbano.',
+                'precio' => 135000,
+                'talla' => 'S',
+                'categoria' => 'Pantalones',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Pantalón Cargo Oversize',
+                'descripcion' => 'Pantalón cargo oversize con bolsillos laterales. Corte holgado y moderno. Tejido resistente para la vida en la ciudad.',
+                'precio' => 175000,
+                'talla' => 'L',
+                'categoria' => 'Pantalones',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1517438476312-10d79c077509?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Jean Skinny Black Destroyed',
+                'descripcion' => 'Jean skinny negro con roturas estratégicas. Denim con stretch para comodidad. Actitud rock-star para la calle.',
+                'precio' => 185000,
+                'talla' => 'M',
+                'categoria' => 'Pantalones',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=800&q=80',
+            ],
+
+            // CHAQUETAS (6 productos)
+            [
+                'titulo' => 'Bomber Jacket Nylon Classic',
+                'descripcion' => 'Chaqueta bomber en nylon con forro interior. Cierre frontal y puños elásticos. Clásico atemporal del streetwear.',
+                'precio' => 225000,
+                'talla' => 'M',
+                'categoria' => 'Chaquetas',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Chaqueta Denim Oversized',
+                'descripcion' => 'Chaqueta de jean oversize con lavado vintage. Cuello clásico y botones metálicos. Layering esencial para entretiempo.',
+                'precio' => 215000,
+                'talla' => 'L',
+                'categoria' => 'Chaquetas',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Windbreaker Tech Shell',
+                'descripcion' => 'Windbreaker técnico con capucha ajustable. Tejido impermeable y transpirable. Bolsillos con cierre. Para la ciudad en movimiento.',
+                'precio' => 245000,
+                'talla' => 'M',
+                'categoria' => 'Chaquetas',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Chaqueta Puffer Ligera',
+                'descripcion' => 'Chaqueta puffer ultraligera con relleno sintético. Empacable en su propio bolsillo. Calor sin volumen para días fríos.',
+                'precio' => 265000,
+                'talla' => 'S',
+                'categoria' => 'Chaquetas',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1544923246-77307dd270b1?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Chaqueta Leather Biker',
+                'descripcion' => 'Chaqueta de cuero sintético estilo biker. Cremalleras asimétricas y detalles metálicos. Actitud rebelde garantizada.',
+                'precio' => 295000,
+                'talla' => 'M',
+                'categoria' => 'Chaquetas',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1551537789-42834e003897?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Chaqueta Varsity Letterman',
+                'descripcion' => 'Chaqueta varsity con mangas de cuero y cuerpo de lana. Parches bordados y puños acanalados. Estilo universitario americano.',
+                'precio' => 285000,
+                'talla' => 'L',
+                'categoria' => 'Chaquetas',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1578932750294-f5075e85f44a?w=800&q=80',
+            ],
+
+            // ACCESORIOS (5 productos)
+            [
+                'titulo' => 'Gorra Dad Hat Minimal',
+                'descripcion' => 'Gorra dad hat con logo bordado minimalista. Algodón lavado de 6 paneles. Ajuste personalizado con hebilla metálica.',
+                'precio' => 65000,
+                'talla' => 'Única',
+                'categoria' => 'Accesorios',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Riñonera Crossbody Utility',
+                'descripcion' => 'Riñonera crossbody con múltiples compartimentos. Tejido resistente al agua. Uso versátil: cintura o cruzado. Esencial urbano.',
+                'precio' => 85000,
+                'talla' => 'Única',
+                'categoria' => 'Accesorios',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Bufanda Chunky Knit',
+                'descripcion' => 'Bufanda tejida en punto grueso. Lana acrílica suave y cálida. Tamaño oversize para abrazar en días fríos.',
+                'precio' => 75000,
+                'talla' => 'Única',
+                'categoria' => 'Accesorios',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Mochila Tech Backpack',
+                'descripcion' => 'Mochila técnica con compartimento para laptop 15". Tejido impermeable y espalda acolchada. Diseño minimalista funcional.',
+                'precio' => 195000,
+                'talla' => 'Única',
+                'categoria' => 'Accesorios',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80',
+            ],
+            [
+                'titulo' => 'Gorra Snapback Classic',
+                'descripcion' => 'Gorra snapback con visera plana y cierre ajustable. Bordado frontal. Estilo hip-hop clásico que nunca pasa de moda.',
+                'precio' => 70000,
+                'talla' => 'Única',
+                'categoria' => 'Accesorios',
+                'estado' => 'disponible',
+                'imagen' => 'https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?w=800&q=80',
+            ],
+        ];
+
+        foreach ($prendas as $prenda) {
+            Prenda::create($prenda);
+        }
+    }
+}
