@@ -159,7 +159,7 @@
                 </label>
                 <div class="mb-3 h-40 w-full overflow-hidden rounded-lg border border-white/10 bg-[#111210]">
                     @if($prenda->imagen)
-                        <img src="{{ asset('storage/' . $prenda->imagen) }}" alt="{{ $prenda->titulo }}" class="h-full w-full object-cover">
+                        <img src="{{ Storage::disk('s3')->url($prenda->imagen) }}" alt="{{ $prenda->titulo }}" class="h-full w-full object-cover">
                     @else
                         <div class="flex h-full w-full items-center justify-center text-[#a5aaa6] text-sm mono">Sin imagen</div>
                     @endif

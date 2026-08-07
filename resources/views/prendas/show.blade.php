@@ -41,7 +41,7 @@
 
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
       <div class="zoom-container w-full h-auto max-h-[80vh] overflow-hidden rounded-xl border border-white/10 bg-zinc-900/50">
-        <img src="{{ asset('storage/' . $prenda->imagen) }}" alt="{{ $prenda->titulo }}" class="zoom-image w-full h-full object-contain" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80';">
+        <img src="{{ Storage::disk('s3')->url($prenda->imagen) }}" alt="{{ $prenda->titulo }}" class="zoom-image w-full h-full object-contain" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80';">
       </div>
 
       <div class="flex flex-col">

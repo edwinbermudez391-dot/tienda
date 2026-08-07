@@ -86,7 +86,7 @@
                     <tr class="table-row border-b border-white/5 last:border-b-0">
                         <td class="px-5 py-4">
                             <div class="h-14 w-14 flex-shrink-0 overflow-hidden rounded-md border border-white/10 bg-[#111210]">
-                                <img src="{{ asset('storage/' . $prenda->imagen) }}" alt="{{ $prenda->titulo }}" class="h-full w-full object-cover object-center" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80';">
+                                <img src="{{ Storage::disk('s3')->url($prenda->imagen) }}" alt="{{ $prenda->titulo }}" class="h-full w-full object-cover object-center" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80';">
                             </div>
                         </td>
                         <td class="px-5 py-4">
@@ -137,7 +137,7 @@
                 <div class="p-5">
                     <div class="flex gap-4">
                         <div class="h-16 w-16 flex-shrink-0 overflow-hidden rounded-md border border-white/10 bg-[#111210]">
-                            <img src="{{ asset('storage/' . $prenda->imagen) }}" alt="{{ $prenda->titulo }}" class="h-full w-full object-cover object-center" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80';">
+                            <img src="{{ Storage::disk('s3')->url($prenda->imagen) }}" alt="{{ $prenda->titulo }}" class="h-full w-full object-cover object-center" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80';">
                         </div>
                         <div class="flex-1 min-w-0">
                             <p class="font-bold text-[#f3f2ec] truncate">{{ $prenda->titulo }}</p>

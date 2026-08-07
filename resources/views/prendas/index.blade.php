@@ -131,7 +131,7 @@
               <span class="sr-only">Ver detalles de {{ $prenda->titulo }}</span>
             </a>
             <div class="relative aspect-[3/4] overflow-hidden">
-              <img loading="lazy" class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105" src="{{ asset('storage/' . $prenda->imagen) }}" alt="{{ $prenda->titulo }}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80';">
+              <img loading="lazy" class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105" src="{{ Storage::disk('s3')->url($prenda->imagen) }}" alt="{{ $prenda->titulo }}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80';">
               <div class="absolute inset-0 bg-gradient-to-t from-[#111210] via-transparent to-transparent opacity-60"></div>
               <span class="absolute left-4 top-4 z-50 rounded-full bg-[#c8ff00] px-3 py-1 mono text-[10px] font-bold text-[#111210]">{{ strtoupper($prenda->estado) }}</span>
               <div class="absolute bottom-0 left-0 right-0 p-5">
@@ -184,7 +184,7 @@
               <span class="sr-only">Ver detalles de {{ $prenda->titulo }}</span>
             </a>
             <div class="relative aspect-[4/5] overflow-hidden">
-              <img loading="lazy" class="piece-image h-full w-full object-cover" src="{{ asset('storage/' . $prenda->imagen) }}" alt="{{ $prenda->titulo }}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80';">
+              <img loading="lazy" class="piece-image h-full w-full object-cover" src="{{ Storage::disk('s3')->url($prenda->imagen) }}" alt="{{ $prenda->titulo }}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80';">
               <span class="absolute left-4 top-4 z-50 rounded-full bg-[#c8ff00] px-3 py-1 mono text-[10px] font-bold text-[#111210]">{{ strtoupper($prenda->estado) }}</span>
             </div>
             <div class="relative p-5">
@@ -227,7 +227,7 @@
           @foreach($muroPrendas as $prenda)
           <div onclick="window.location.href='{{ route('prendas.show', $prenda->id) }}'" class="group style-frame w-[75vw] sm:w-72 md:w-80 lg:w-[320px] h-[450px] md:h-[500px] shrink-0 snap-center cursor-pointer">
             <div class="relative w-full h-full overflow-hidden rounded-2xl border border-white/10 bg-[#1b1d1a] transition-all duration-300 hover:border-[#c8ff00]/50 hover:shadow-[0_20px_60px_rgba(200,255,0,0.15)]">
-              <img loading="lazy" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" src="{{ asset('storage/' . $prenda->imagen) }}" alt="{{ $prenda->titulo }}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80';">
+              <img loading="lazy" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" src="{{ Storage::disk('s3')->url($prenda->imagen) }}" alt="{{ $prenda->titulo }}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80';">
               <div class="absolute inset-0 bg-gradient-to-t from-[#111210]/80 via-transparent to-transparent"></div>
               <div class="absolute bottom-4 left-4 right-4">
                 <p class="mono text-[10px] tracking-[.14em] text-[#c8ff00] transition-all duration-300 group-hover:brightness-125 group-hover:text-[#d4ff33]">{{ $prenda->categoria }}</p>
