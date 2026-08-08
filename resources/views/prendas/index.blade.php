@@ -205,24 +205,24 @@
           <p class="max-w-md leading-relaxed text-[#a5aaa6]">Selección curatorial de las piezas más icónicas de la colección. Ediciones limitadas y exclusivos del archivo.</p>
         </div>
 
-        <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div class="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-8">
           @forelse($spotlightPrendas as $prenda)
           <div onclick="window.location.href='{{ route('prendas.show', $prenda->id) }}'" class="group relative block overflow-hidden rounded-2xl border border-white/10 bg-[#1b1d1a] cursor-pointer transition-all duration-300 hover:border-[#c8ff00]/50 hover:shadow-[0_20px_60px_rgba(200,255,0,0.15)]">
             <a href="{{ route('prendas.show', $prenda->id) }}" class="absolute inset-0 z-40">
               <span class="sr-only">Ver detalles de {{ $prenda->titulo }}</span>
             </a>
-            <div class="relative aspect-[3/4] overflow-hidden">
+            <div class="relative h-56 sm:h-64 lg:h-72 w-full overflow-hidden">
               <img loading="lazy" class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105" src="{{ Storage::disk('s3')->url($prenda->imagen) }}" alt="{{ $prenda->titulo }}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80';">
               <div class="absolute inset-0 bg-gradient-to-t from-[#111210] via-transparent to-transparent opacity-60"></div>
-              <span class="absolute left-4 top-4 z-50 rounded-full bg-[#c8ff00] px-3 py-1 mono text-[10px] font-bold text-[#111210]">{{ strtoupper($prenda->estado) }}</span>
-              <div class="absolute bottom-0 left-0 right-0 p-5">
-                <p class="mono text-[10px] tracking-[.14em] text-[#c8ff00]/80">UH-04 / {{ str_pad($prenda->id, 3, '0', STR_PAD_LEFT) }}</p>
-                <h3 class="mt-1 font-bold text-lg text-[#f3f2ec]">{{ $prenda->titulo }}</h3>
+              <span class="absolute left-3 top-3 sm:left-4 sm:top-4 z-50 rounded-full bg-[#c8ff00] px-2.5 py-1 sm:px-3 mono text-[9px] sm:text-[10px] font-bold text-[#111210]">{{ strtoupper($prenda->estado) }}</span>
+              <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
+                <p class="mono text-[9px] sm:text-[10px] tracking-[.14em] text-[#c8ff00]/80">UH-04 / {{ str_pad($prenda->id, 3, '0', STR_PAD_LEFT) }}</p>
+                <h3 class="mt-1 font-bold text-base sm:text-lg text-[#f3f2ec]">{{ $prenda->titulo }}</h3>
               </div>
             </div>
-            <div class="relative flex items-center justify-between border-t border-white/10 px-5 py-4">
-              <span class="mono font-bold text-[#c8ff00]">$ {{ number_format($prenda->precio, 0, ',', '.') }}</span>
-              <span class="mono text-xs text-[#a5aaa6]">{{ $prenda->categoria }}</span>
+            <div class="relative flex items-center justify-between border-t border-white/10 px-4 py-3 sm:px-5 sm:py-4">
+              <span class="mono font-bold text-[#c8ff00] text-sm sm:text-base">$ {{ number_format($prenda->precio, 0, ',', '.') }}</span>
+              <span class="mono text-[11px] sm:text-xs text-[#a5aaa6]">{{ $prenda->categoria }}</span>
             </div>
           </div>
           @empty
@@ -258,25 +258,29 @@
         </div>
 
         <!-- Cuadrícula dinámica de Prendas desde Laravel -->
-        <div id="piece-grid" class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div id="piece-grid" class="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-8">
           @forelse($prendas as $prenda)
           <div onclick="window.location.href='{{ route('prendas.show', $prenda->id) }}'" class="piece-card relative block overflow-hidden rounded-2xl border border-white/10 bg-[#1b1d1a] cursor-pointer">
             <a href="{{ route('prendas.show', $prenda->id) }}" class="absolute inset-0 z-40">
               <span class="sr-only">Ver detalles de {{ $prenda->titulo }}</span>
             </a>
-            <div class="relative aspect-[4/5] overflow-hidden">
+            <div class="relative h-56 sm:h-64 lg:h-72 w-full overflow-hidden">
               <img loading="lazy" class="piece-image h-full w-full object-cover" src="{{ Storage::disk('s3')->url($prenda->imagen) }}" alt="{{ $prenda->titulo }}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80';">
-              <span class="absolute left-4 top-4 z-50 rounded-full bg-[#c8ff00] px-3 py-1 mono text-[10px] font-bold text-[#111210]">{{ strtoupper($prenda->estado) }}</span>
+              <span class="absolute left-3 top-3 sm:left-4 sm:top-4 z-50 rounded-full bg-[#c8ff00] px-2.5 py-1 sm:px-3 mono text-[9px] sm:text-[10px] font-bold text-[#111210]">{{ strtoupper($prenda->estado) }}</span>
             </div>
-            <div class="relative p-5">
-              <p class="mono text-[10px] tracking-[.14em] text-[#a5aaa6]">UH-04 / {{ str_pad($prenda->id, 3, '0', STR_PAD_LEFT) }}</p>
-              <h3 class="mt-2 font-bold text-lg text-[#f3f2ec]">{{ $prenda->titulo }}</h3>
-              <div class="mt-3 flex items-center gap-3">
-                <span class="mono font-bold text-[#c8ff00] text-lg">$ {{ number_format($prenda->precio, 0, ',', '.') }}</span>
-                <span class="text-gray-400 text-sm">{{ $prenda->talla }}</span>
+            <div class="relative flex flex-col space-y-1.5 sm:space-y-2 p-4 sm:p-5">
+              <p class="mono text-[9px] sm:text-[10px] tracking-[.14em] text-[#a5aaa6]">UH-04 / {{ str_pad($prenda->id, 3, '0', STR_PAD_LEFT) }}</p>
+              <h3 class="font-bold text-base sm:text-lg text-[#f3f2ec] leading-snug">{{ $prenda->titulo }}</h3>
+              <div class="flex items-center gap-2 sm:gap-3 pt-1">
+                <span class="mono font-bold text-[#c8ff00] text-base sm:text-lg">$ {{ number_format($prenda->precio, 0, ',', '.') }}</span>
+                <span class="text-[11px] sm:text-sm text-gray-400">{{ $prenda->talla }}</span>
               </div>
-              <p class="mt-1 text-gray-400 text-sm">{{ $prenda->categoria }}</p>
-              <p class="mt-3 text-sm leading-relaxed text-[#a5aaa6]">{{ $prenda->descripcion }}</p>
+              <div class="flex items-center gap-2 pt-0.5">
+                <span class="text-xs sm:text-sm text-gray-400">{{ $prenda->categoria }}</span>
+              </div>
+              @if($prenda->descripcion)
+              <p class="text-xs sm:text-sm leading-relaxed text-[#a5aaa6] line-clamp-2 pt-1">{{ $prenda->descripcion }}</p>
+              @endif
             </div>
           </div>
           @empty
