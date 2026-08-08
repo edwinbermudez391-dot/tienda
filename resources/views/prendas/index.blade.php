@@ -474,6 +474,7 @@
         e.preventDefault();
         const href = link.getAttribute('href');
         const url = href.replace(/#coleccion$/, '');
+        console.log('Paginando a:', url);
 
         fetch(url, {
           headers: { 'X-Requested-With': 'XMLHttpRequest' }
