@@ -489,11 +489,6 @@
             document.getElementById('catalogo-contenedor').innerHTML = newContent.innerHTML;
             history.pushState(null, '', url);
             lucide.createIcons();
-            const coleccionSection = document.getElementById('coleccion');
-            if (coleccionSection) {
-              const topPos = coleccionSection.getBoundingClientRect().top + window.pageYOffset - 80;
-              window.scrollTo({ top: topPos, behavior: 'auto' });
-            }
           }
         })
         .catch(error => console.error('Error:', error));
@@ -514,11 +509,6 @@
           if (newContent) {
             document.getElementById('catalogo-contenedor').innerHTML = newContent.innerHTML;
             lucide.createIcons();
-            const coleccionSection = document.getElementById('coleccion');
-            if (coleccionSection) {
-              const topPos = coleccionSection.getBoundingClientRect().top + window.pageYOffset - 80;
-              window.scrollTo({ top: topPos, behavior: 'auto' });
-            }
           }
         })
         .catch(error => console.error('Error:', error));
