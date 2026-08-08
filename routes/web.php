@@ -25,5 +25,11 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::match(['put', 'patch'], '/prendas/{prenda}', [PrendaController::class, 'update'])->name('prendas.update');
     Route::delete('/prendas/{prenda}', [PrendaController::class, 'destroy'])->name('prendas.destroy');
 });
+use Illuminate\Support\Facades\Artisan;
+
+Route::get('/limpiar-cache', function () {
+    Artisan::call('optimize:clear');
+    return 'Caché limpiada con éxito en el servidor de producción.';
+});
 
 require __DIR__.'/auth.php';
