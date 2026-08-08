@@ -489,9 +489,6 @@
             document.getElementById('catalogo-contenedor').innerHTML = newContent.innerHTML;
             history.pushState(null, '', url);
             lucide.createIcons();
-            const section = document.getElementById('coleccion');
-            const topPos = section.getBoundingClientRect().top + window.pageYOffset - 80;
-            window.scrollTo({ top: topPos, behavior: 'smooth' });
           }
         })
         .catch(error => console.error('Error:', error));
@@ -512,9 +509,6 @@
           if (newContent) {
             document.getElementById('catalogo-contenedor').innerHTML = newContent.innerHTML;
             lucide.createIcons();
-            const section = document.getElementById('coleccion');
-            const topPos = section.getBoundingClientRect().top + window.pageYOffset - 80;
-            window.scrollTo({ top: topPos, behavior: 'smooth' });
           }
         })
         .catch(error => console.error('Error:', error));
