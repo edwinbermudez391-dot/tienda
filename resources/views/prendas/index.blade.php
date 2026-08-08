@@ -120,7 +120,7 @@
         <span class="h-2.5 w-2.5 sm:h-3 sm:w-3 rotate-45 bg-[#c8ff00]"></span>
         <span class="mono font-bold tracking-[-.1em] text-lg sm:text-xl text-[#f3f2ec]">URBAN HAUS.</span>
       </a>
-      <div class="desktop-nav flex items-center gap-7">
+      <div class="desktop-nav hidden md:flex items-center gap-7">
         <a class="text-sm text-white/70 transition hover:text-[#c8ff00]" href="#spotlight">Spotlight</a>
         <a class="text-sm text-white/70 transition hover:text-[#c8ff00]" href="#coleccion">Exposición</a>
         <a class="text-sm text-white/70 transition hover:text-[#c8ff00]" href="#muro">Muro de estilo</a>
@@ -130,7 +130,7 @@
         @endauth
         <a class="lime-action rounded-full px-5 py-2.5 text-sm font-bold" href="#coleccion">Ver piezas</a>
       </div>
-      <button id="menu-toggle" class="mobile-toggle flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm transition-all hover:border-[#c8ff00] hover:bg-[#c8ff00]/10" type="button" aria-label="Abrir menú">
+      <button id="menu-toggle" class="mobile-toggle md:hidden flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm transition-all hover:border-[#c8ff00] hover:bg-[#c8ff00]/10" type="button" aria-label="Abrir menú">
         <svg class="w-5 h-5 text-[#f3f2ec]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
