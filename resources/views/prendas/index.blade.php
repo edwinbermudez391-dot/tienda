@@ -39,16 +39,16 @@
     @media (max-width:767px) { .desktop-nav { display:none; } }
     @media (min-width:768px) { .mobile-toggle,.mobile-drawer,.drawer-overlay { display:none; } }
     
-    /* Drawer Mobile Styles */
+    /* Drawer Mobile Premium Styles */
     .drawer-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(4px);
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
       z-index: 49;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .drawer-overlay.active {
       opacity: 1;
@@ -60,31 +60,56 @@
       right: 0;
       bottom: 0;
       width: 85%;
-      max-width: 320px;
-      background: #1b1d1a;
-      border-left: 1px solid rgba(243, 242, 236, 0.1);
+      max-width: 360px;
+      background: linear-gradient(135deg, #1b1d1a 0%, #111210 100%);
+      border-left: 1px solid rgba(200, 255, 0, 0.15);
       z-index: 50;
       transform: translateX(100%);
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       overflow-y: auto;
+      box-shadow: -20px 0 60px rgba(0, 0, 0, 0.5);
     }
     .mobile-drawer.active {
       transform: translateX(0);
     }
     .drawer-link {
       display: block;
-      padding: 1rem 1.5rem;
-      font-size: 0.875rem;
+      padding: 1.25rem 1.75rem;
+      font-size: 0.95rem;
       font-weight: 600;
       color: #f3f2ec;
       text-decoration: none;
-      border-bottom: 1px solid rgba(243, 242, 236, 0.05);
-      transition: all 0.2s ease;
+      border-bottom: 1px solid rgba(243, 242, 236, 0.08);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .drawer-link::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: #c8ff00;
+      transform: scaleY(0);
+      transition: transform 0.3s ease;
     }
     .drawer-link:hover {
-      background: rgba(200, 255, 0, 0.08);
+      background: rgba(200, 255, 0, 0.06);
       color: #c8ff00;
-      padding-left: 2rem;
+      padding-left: 2.25rem;
+    }
+    .drawer-link:hover::before {
+      transform: scaleY(1);
+    }
+    .drawer-close-btn {
+      transition: all 0.3s ease;
+    }
+    .drawer-close-btn:hover {
+      background: rgba(200, 255, 0, 0.15);
+      border-color: #c8ff00;
+      transform: rotate(90deg);
     }
   </style>
 </head>
@@ -105,8 +130,10 @@
         @endauth
         <a class="lime-action rounded-full px-5 py-2.5 text-sm font-bold" href="#coleccion">Ver piezas</a>
       </div>
-      <button id="menu-toggle" class="mobile-toggle rounded-full border border-white/20 p-1.5 sm:p-2" type="button" aria-label="Abrir menú">
-        <i data-lucide="menu" class="h-4 w-4 sm:h-5 sm:w-5"></i>
+      <button id="menu-toggle" class="mobile-toggle flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm transition-all hover:border-[#c8ff00] hover:bg-[#c8ff00]/10" type="button" aria-label="Abrir menú">
+        <svg class="w-5 h-5 text-[#f3f2ec]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
       </button>
     </nav>
   </header>
@@ -116,41 +143,46 @@
 
   <!-- Mobile Drawer -->
   <div id="mobile-drawer" class="mobile-drawer">
-    <div class="flex items-center justify-between border-b border-white/10 px-5 py-4">
-      <div class="flex items-center gap-2">
-        <span class="h-2.5 w-2.5 rotate-45 bg-[#c8ff00]"></span>
-        <span class="mono font-bold tracking-[-.1em] text-lg text-[#f3f2ec]">URBAN HAUS.</span>
+    <div class="sticky top-0 z-10 flex items-center justify-between border-b border-white/10 bg-[#1b1d1a]/95 backdrop-blur-md px-6 py-5">
+      <div class="flex items-center gap-3">
+        <span class="h-3 w-3 rotate-45 bg-[#c8ff00]"></span>
+        <span class="mono font-bold tracking-[-.1em] text-xl text-[#f3f2ec]">URBAN HAUS.</span>
       </div>
-      <button id="drawer-close" class="rounded-full border border-white/20 p-2 transition hover:border-[#c8ff00] hover:bg-[#c8ff00]/10" aria-label="Cerrar menú">
-        <i data-lucide="x" class="h-4 w-4 text-[#f3f2ec]"></i>
+      <button id="drawer-close" class="drawer-close-btn flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-white/5" aria-label="Cerrar menú">
+        <svg class="w-5 h-5 text-[#f3f2ec]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
       </button>
     </div>
-    <nav class="flex flex-col py-4">
+    <nav class="flex flex-col py-6">
       <a class="drawer-link" href="#spotlight">
-        <span class="mono text-[10px] tracking-[.18em] text-[#c8ff00] font-bold block mb-1">01</span>
-        Spotlight
+        <span class="mono text-[10px] tracking-[.2em] text-[#c8ff00] font-bold block mb-1.5">01</span>
+        <span class="text-lg font-semibold">Spotlight</span>
       </a>
       <a class="drawer-link" href="#coleccion">
-        <span class="mono text-[10px] tracking-[.18em] text-[#c8ff00] font-bold block mb-1">02</span>
-        Exposición
+        <span class="mono text-[10px] tracking-[.2em] text-[#c8ff00] font-bold block mb-1.5">02</span>
+        <span class="text-lg font-semibold">Exposición</span>
       </a>
       <a class="drawer-link" href="#muro">
-        <span class="mono text-[10px] tracking-[.18em] text-[#c8ff00] font-bold block mb-1">03</span>
-        Muro de Estilo
+        <span class="mono text-[10px] tracking-[.2em] text-[#c8ff00] font-bold block mb-1.5">03</span>
+        <span class="text-lg font-semibold">Muro de Estilo</span>
       </a>
       <a class="drawer-link" href="#contacto">
-        <span class="mono text-[10px] tracking-[.18em] text-[#c8ff00] font-bold block mb-1">04</span>
-        Contacto
+        <span class="mono text-[10px] tracking-[.2em] text-[#c8ff00] font-bold block mb-1.5">04</span>
+        <span class="text-lg font-semibold">Contacto</span>
       </a>
       @auth
       <a class="drawer-link" href="{{ route('prendas.admin') }}">
-        <span class="mono text-[10px] tracking-[.18em] text-[#c8ff00] font-bold block mb-1">ADMIN</span>
-        Panel de Control
+        <span class="mono text-[10px] tracking-[.2em] text-[#c8ff00] font-bold block mb-1.5">ADMIN</span>
+        <span class="text-lg font-semibold">Panel de Control</span>
       </a>
       @endauth
     </nav>
-    <div class="px-5 py-6 border-t border-white/10">
-      <a class="lime-action block rounded-full px-5 py-3 text-sm font-bold text-center" href="#coleccion">Ver piezas</a>
+    <div class="sticky bottom-0 px-6 py-6 border-t border-white/10 bg-[#1b1d1a]/95 backdrop-blur-md">
+      <a class="lime-action block rounded-full px-6 py-4 text-sm font-bold text-center shadow-lg shadow-[#c8ff00]/20" href="#coleccion">
+        Ver piezas
+      </a>
+      <p class="mono text-[10px] tracking-[.15em] text-[#a5aaa6] text-center mt-4">BOGOTÁ · 2026</p>
     </div>
   </div>
 
@@ -384,26 +416,51 @@
       const drawer = document.getElementById('mobile-drawer');
       const overlay = document.getElementById('drawer-overlay');
       const closeBtn = document.getElementById('drawer-close');
+      const drawerLinks = drawer.querySelectorAll('.drawer-link');
       
       function openDrawer() {
         drawer.classList.add('active');
         overlay.classList.add('active');
         document.body.style.overflow = 'hidden';
-        lucide.createIcons();
+        
+        // Stagger animation for links
+        drawerLinks.forEach((link, index) => {
+          link.style.opacity = '0';
+          link.style.transform = 'translateX(20px)';
+          setTimeout(() => {
+            link.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            link.style.opacity = '1';
+            link.style.transform = 'translateX(0)';
+          }, 100 + (index * 60));
+        });
       }
       
       function closeDrawer() {
         drawer.classList.remove('active');
         overlay.classList.remove('active');
         document.body.style.overflow = '';
+        
+        // Reset link styles
+        drawerLinks.forEach(link => {
+          link.style.transition = '';
+          link.style.opacity = '';
+          link.style.transform = '';
+        });
       }
       
       toggle.addEventListener('click', openDrawer);
       closeBtn.addEventListener('click', closeDrawer);
       overlay.addEventListener('click', closeDrawer);
       
+      // Close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && drawer.classList.contains('active')) {
+          closeDrawer();
+        }
+      });
+      
       // Cerrar drawer al hacer clic en un enlace
-      drawer.querySelectorAll('.drawer-link').forEach(link => {
+      drawerLinks.forEach(link => {
         link.addEventListener('click', () => {
           closeDrawer();
         });
