@@ -17,7 +17,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth'])->prefix('admin')->group(function () {
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/prendas', [PrendaController::class, 'admin'])->name('prendas.admin');
     Route::get('/prendas/crear', [PrendaController::class, 'create'])->name('prendas.create');
     Route::post('/prendas', [PrendaController::class, 'store'])->name('prendas.store');
