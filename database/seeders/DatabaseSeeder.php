@@ -11,15 +11,17 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::firstOrCreate(
-            ['email' => 'admin@urbanhaus.com'],
+            ['email' => 'admin@urbanhaus.studio'],
             [
                 'name' => 'Admin URBAN HAUS',
-                'email' => 'admin@urbanhaus.com',
+                'email' => 'admin@urbanhaus.studio',
                 'password' => Hash::make('UrbanHaus2026'),
+                'is_admin' => true,
             ]
         );
 
         $this->call([
+            AdminUserSeeder::class,
             PrendaSeeder::class,
         ]);
     }

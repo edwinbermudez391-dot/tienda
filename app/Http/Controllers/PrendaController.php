@@ -58,7 +58,7 @@ class PrendaController extends Controller
 
     public function admin()
     {
-        $prendas = Prenda::orderBy('created_at', 'desc')->get();
+        $prendas = Prenda::orderBy('created_at', 'desc')->paginate(10);
 
         return view('prendas.admin', compact('prendas'));
     }

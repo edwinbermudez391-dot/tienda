@@ -15,7 +15,7 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!$request->user() || $request->user()->email !== 'admin@urbanhaus.studio') {
+        if (!$request->user() || !$request->user()->is_admin) {
             return redirect()->route('prendas.index')->with('error', 'Acceso no autorizado.');
         }
 

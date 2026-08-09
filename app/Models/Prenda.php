@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Prenda extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'titulo',
         'descripcion',
@@ -17,5 +20,12 @@ class Prenda extends Model
         'mostrar_spotlight',
         'mostrar_catalogo',
         'mostrar_muro',
+    ];
+
+    protected $casts = [
+        'mostrar_spotlight' => 'boolean',
+        'mostrar_catalogo' => 'boolean',
+        'mostrar_muro' => 'boolean',
+        'precio' => 'decimal:2',
     ];
 }

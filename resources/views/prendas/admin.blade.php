@@ -174,7 +174,7 @@
         </div>
 
         <div class="mt-8 border-t border-white/10 pt-6">
-            <p class="mono text-xs text-[#a5aaa6]">{{ $prendas->count() }} pieza{{ $prendas->count() !== 1 ? 's' : '' }} en el archivo</p>
+            {{ $prendas->links() }}
         </div>
     </main>
 </body>
