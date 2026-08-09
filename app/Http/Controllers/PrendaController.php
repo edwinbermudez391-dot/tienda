@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PrendaRequest;
 use App\Models\Prenda;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class PrendaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $query = Prenda::where('mostrar_catalogo', true);
-        if (request()->filled('categoria')) {
-            $query->where('categoria', request('categoria'));
+        if ($request->filled('categoria')) {
+            $query->where('categoria', $request->input('categoria'));
         }
         $prendas = $query->latest()->paginate(8)->withQueryString();
         $spotlightPrendas = Prenda::where('mostrar_spotlight', true)->where('estado', 'disponible')->latest()->take(6)->get();
@@ -23,6 +24,8 @@ class PrendaController extends Controller
 
     public function show(Prenda $prenda)
     {
+        abort_if(!$prenda->mostrar_catalogo && !$prenda->mostrar_muro, 404);
+
         return view('prendas.show', compact('prenda'));
     }
 
@@ -31,25 +34,17 @@ class PrendaController extends Controller
         return view('prendas.create');
     }
 
-    public function store(Request $request)
+    public function store(PrendaRequest $request)
     {
-        $validated = $request->validate([
-            'titulo' => 'required|string',
-            'descripcion' => 'nullable|string',
-            'precio' => 'required|numeric',
-            'talla' => 'required|string',
-            'categoria' => 'required|string|max:255',
-            'estado' => 'required|string',
-            'imagen' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
-        ]);
+        $validated = $request->validated();
 
         if ($request->hasFile('imagen')) {
             $validated['imagen'] = $request->file('imagen')->store('prendas', 's3');
         }
 
-        $validated['mostrar_spotlight'] = $request->has('mostrar_spotlight');
-        $validated['mostrar_catalogo'] = $request->has('mostrar_catalogo');
-        $validated['mostrar_muro'] = $request->has('mostrar_muro');
+        $validated['mostrar_spotlight'] = $request->boolean('mostrar_spotlight');
+        $validated['mostrar_catalogo'] = $request->boolean('mostrar_catalogo');
+        $validated['mostrar_muro'] = $request->boolean('mostrar_muro');
 
         Prenda::create($validated);
 
@@ -68,17 +63,9 @@ class PrendaController extends Controller
         return view('prendas.edit', compact('prenda'));
     }
 
-    public function update(Request $request, Prenda $prenda)
+    public function update(PrendaRequest $request, Prenda $prenda)
     {
-        $validated = $request->validate([
-            'titulo' => 'required|string',
-            'descripcion' => 'nullable|string',
-            'precio' => 'required|numeric',
-            'talla' => 'required|string',
-            'categoria' => 'required|string|max:255',
-            'estado' => 'required|string',
-            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-        ]);
+        $validated = $request->validated();
 
         if ($request->hasFile('imagen')) {
             if ($prenda->imagen) {
@@ -87,9 +74,9 @@ class PrendaController extends Controller
             $validated['imagen'] = $request->file('imagen')->store('prendas', 's3');
         }
 
-        $validated['mostrar_spotlight'] = $request->has('mostrar_spotlight');
-        $validated['mostrar_catalogo'] = $request->has('mostrar_catalogo');
-        $validated['mostrar_muro'] = $request->has('mostrar_muro');
+        $validated['mostrar_spotlight'] = $request->boolean('mostrar_spotlight');
+        $validated['mostrar_catalogo'] = $request->boolean('mostrar_catalogo');
+        $validated['mostrar_muro'] = $request->boolean('mostrar_muro');
 
         $prenda->update($validated);
 
