@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URBAN HAUS - Nueva Prenda</title>
-    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body class="bg-[#111210] min-h-screen text-[#f3f2ec]">
-    <div class="container mx-auto px-4 py-6 sm:py-10 max-w-2xl">
+@extends('layouts.admin')
+
+@section('title', 'URBAN HAUS — Nueva Prenda')
+
+@section('content')
         <div class="mb-6 sm:mb-10">
             <h1 class="text-2xl sm:text-4xl font-bold text-[#c8ff00] tracking-widest" style="font-family: 'Space Mono', monospace;">URBAN HAUS</h1>
             <div class="mt-3 flex items-center gap-3">
@@ -31,6 +23,7 @@
                     id="titulo"
                     name="titulo"
                     value="{{ old('titulo') }}"
+                    maxlength="255"
                     class="w-full px-4 py-3 bg-[#111210] border border-[#f3f2ec]/10 rounded text-[#f3f2ec] placeholder-[#f3f2ec]/30 focus:outline-none focus:border-[#c8ff00] transition-colors"
                     placeholder="Ej: Chaqueta Urbana"
                 >
@@ -49,11 +42,9 @@
                     class="w-full px-4 py-3 bg-[#111210] border border-[#f3f2ec]/10 rounded text-[#f3f2ec] focus:outline-none focus:border-[#c8ff00] transition-colors appearance-none cursor-pointer"
                 >
                     <option value="">Seleccionar categoría</option>
-                    <option value="Camisetas" {{ old('categoria') == 'Camisetas' ? 'selected' : '' }}>Camisetas</option>
-                    <option value="Hoodies" {{ old('categoria') == 'Hoodies' ? 'selected' : '' }}>Hoodies</option>
-                    <option value="Pantalones" {{ old('categoria') == 'Pantalones' ? 'selected' : '' }}>Pantalones</option>
-                    <option value="Accesorios" {{ old('categoria') == 'Accesorios' ? 'selected' : '' }}>Accesorios</option>
-                    <option value="Chaquetas" {{ old('categoria') == 'Chaquetas' ? 'selected' : '' }}>Chaquetas</option>
+                    @foreach($categorias as $cat)
+                        <option value="{{ $cat }}" {{ old('categoria') == $cat ? 'selected' : '' }}>{{ $cat }}</option>
+                    @endforeach
                 </select>
                 @error('categoria')
                     <p class="mt-1 text-sm text-red-400">{{ $message }}</p>
@@ -68,6 +59,7 @@
                     id="descripcion"
                     name="descripcion"
                     rows="4"
+                    maxlength="1000"
                     class="w-full px-4 py-3 bg-[#111210] border border-[#f3f2ec]/10 rounded text-[#f3f2ec] placeholder-[#f3f2ec]/30 focus:outline-none focus:border-[#c8ff00] transition-colors resize-none"
                     placeholder="Describe la prenda..."
                 >{{ old('descripcion') }}</textarea>
@@ -109,10 +101,9 @@
                         class="w-full px-4 py-3 bg-[#111210] border border-[#f3f2ec]/10 rounded text-[#f3f2ec] focus:outline-none focus:border-[#c8ff00] transition-colors appearance-none cursor-pointer"
                     >
                         <option value="">Seleccionar talla</option>
-                        <option value="S" {{ old('talla') == 'S' ? 'selected' : '' }}>S</option>
-                        <option value="M" {{ old('talla') == 'M' ? 'selected' : '' }}>M</option>
-                        <option value="L" {{ old('talla') == 'L' ? 'selected' : '' }}>L</option>
-                        <option value="XL" {{ old('talla') == 'XL' ? 'selected' : '' }}>XL</option>
+                        @foreach(['S','M','L','XL'] as $t)
+                            <option value="{{ $t }}" {{ old('talla') == $t ? 'selected' : '' }}>{{ $t }}</option>
+                        @endforeach
                     </select>
                     @error('talla')
                         <p class="mt-1 text-sm text-red-400">{{ $message }}</p>
@@ -194,6 +185,4 @@
                 </a>
             </div>
         </form>
-    </div>
-</body>
-</html>
+@endsection

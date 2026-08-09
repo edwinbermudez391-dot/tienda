@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Storage;
 
 class PrendaController extends Controller
 {
+    private const CATEGORIAS = ['Camisetas', 'Hoodies', 'Pantalones', 'Accesorios', 'Chaquetas'];
+
     public function index(Request $request)
     {
         $query = Prenda::where('mostrar_catalogo', true);
@@ -18,8 +20,9 @@ class PrendaController extends Controller
         $prendas = $query->latest()->paginate(8)->withQueryString();
         $spotlightPrendas = Prenda::where('mostrar_spotlight', true)->where('estado', 'disponible')->latest()->take(6)->get();
         $muroPrendas = Prenda::where('mostrar_muro', true)->latest()->take(8)->get();
+        $categorias = self::CATEGORIAS;
 
-        return view('prendas.index', compact('prendas', 'spotlightPrendas', 'muroPrendas'));
+        return view('prendas.index', compact('prendas', 'spotlightPrendas', 'muroPrendas', 'categorias'));
     }
 
     public function show(Prenda $prenda)
@@ -31,7 +34,8 @@ class PrendaController extends Controller
 
     public function create()
     {
-        return view('prendas.create');
+        $categorias = self::CATEGORIAS;
+        return view('prendas.create', compact('categorias'));
     }
 
     public function store(PrendaRequest $request)
@@ -60,7 +64,8 @@ class PrendaController extends Controller
 
     public function edit(Prenda $prenda)
     {
-        return view('prendas.edit', compact('prenda'));
+        $categorias = self::CATEGORIAS;
+        return view('prendas.edit', compact('prenda', 'categorias'));
     }
 
     public function update(PrendaRequest $request, Prenda $prenda)

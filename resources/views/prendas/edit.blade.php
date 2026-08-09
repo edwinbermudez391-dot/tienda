@@ -1,38 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URBAN HAUS — Editar Prenda</title>
-    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root { --ink:#111210; --panel:#1b1d1a; --paper:#f3f2ec; --silver:#a5aaa6; --lime:#c8ff00; }
-        * { box-sizing:border-box; }
-        body { margin:0; font-family:"DM Sans",sans-serif; color:var(--paper); background:var(--ink); }
-        .mono { font-family:"Space Mono",monospace; }
-        .line-action { border:1px solid rgba(243,242,236,.3); transition:border-color .2s ease, background .2s ease; }
-        .line-action:hover { border-color:var(--lime); background:rgba(200,255,0,.08); }
-    </style>
-</head>
-<body class="min-h-screen">
-    <header class="border-b border-white/10 bg-[#111210]/90 backdrop-blur-xl">
-        <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8 gap-3">
-            <a href="{{ route('prendas.admin') }}" class="flex items-center gap-3 flex-shrink-0">
-                <span class="h-3 w-3 rotate-45 bg-[#c8ff00]"></span>
-                <span class="mono font-bold tracking-[-.1em] text-lg md:text-xl text-[#f3f2ec]">URBAN HAUS.</span>
-            </a>
-            <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-                <a href="{{ route('prendas.admin') }}" class="line-action rounded-full px-3 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-bold text-[#f3f2ec]">← Panel</a>
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="rounded-full border border-red-500/30 bg-red-500/10 px-3 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-bold text-red-400 transition hover:border-red-500 hover:bg-red-500/20">Cerrar sesión</button>
-                </form>
-            </div>
-        </nav>
-    </header>
+@extends('layouts.admin')
 
-    <main class="mx-auto max-w-2xl px-4 py-6 sm:py-10">
+@section('title', 'URBAN HAUS — Editar Prenda')
+
+@section('content')
         <div class="mb-6 sm:mb-10">
             <p class="mono text-xs tracking-[.18em] text-[#c8ff00] font-bold">EDITAR / {{ str_pad($prenda->id, 3, '0', STR_PAD_LEFT) }}</p>
             <h1 class="mt-3 font-bold uppercase leading-none tracking-[-.06em] text-2xl sm:text-3xl text-[#f3f2ec] md:text-4xl">Modificar pieza.</h1>
@@ -46,7 +16,7 @@
                 <label for="titulo" class="block text-xs font-bold uppercase tracking-wider text-[#f3f2ec]/70 mb-2 mono">
                     Título <span class="text-[#c8ff00]">*</span>
                 </label>
-                <input type="text" id="titulo" name="titulo" value="{{ old('titulo', $prenda->titulo) }}"
+                <input type="text" id="titulo" name="titulo" value="{{ old('titulo', $prenda->titulo) }}" maxlength="255"
                     class="w-full px-4 py-3 bg-[#111210] border border-[#f3f2ec]/10 rounded text-[#f3f2ec] placeholder-[#f3f2ec]/30 focus:outline-none focus:border-[#c8ff00] transition-colors"
                     placeholder="Ej: Chaqueta Urbana">
                 @error('titulo')
@@ -61,8 +31,8 @@
                 <select id="categoria" name="categoria"
                     class="w-full px-4 py-3 bg-[#111210] border border-[#f3f2ec]/10 rounded text-[#f3f2ec] focus:outline-none focus:border-[#c8ff00] transition-colors appearance-none cursor-pointer">
                     <option value="">Seleccionar categoría</option>
-                    @foreach(['Camisetas','Hoodies','Pantalones','Accesorios','Chaquetas'] as $c)
-                        <option value="{{ $c }}" {{ old('categoria', $prenda->categoria) == $c ? 'selected' : '' }}>{{ $c }}</option>
+                    @foreach($categorias as $cat)
+                        <option value="{{ $cat }}" {{ old('categoria', $prenda->categoria) == $cat ? 'selected' : '' }}>{{ $cat }}</option>
                     @endforeach
                 </select>
                 @error('categoria')
@@ -74,7 +44,7 @@
                 <label for="descripcion" class="block text-xs font-bold uppercase tracking-wider text-[#f3f2ec]/70 mb-2 mono">
                     Descripción
                 </label>
-                <textarea id="descripcion" name="descripcion" rows="4"
+                <textarea id="descripcion" name="descripcion" rows="4" maxlength="1000"
                     class="w-full px-4 py-3 bg-[#111210] border border-[#f3f2ec]/10 rounded text-[#f3f2ec] placeholder-[#f3f2ec]/30 focus:outline-none focus:border-[#c8ff00] transition-colors resize-none"
                     placeholder="Describe la prenda...">{{ old('descripcion', $prenda->descripcion) }}</textarea>
                 @error('descripcion')
@@ -185,6 +155,4 @@
                 </a>
             </div>
         </form>
-    </main>
-</body>
-</html>
+@endsection
