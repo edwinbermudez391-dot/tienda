@@ -20,7 +20,7 @@ class PrendaRequest extends FormRequest
             'titulo' => 'required|string|max:255',
             'descripcion' => 'nullable|string|max:1000',
             'precio' => 'required|numeric|min:0',
-            'talla' => 'required|in:S,M,L,XL',
+            'talla' => 'required|in:S,M,L,XL,XXL,28,30,32,34,36,38,40,42,44',
             'categoria' => 'required|in:Camisetas,Hoodies,Pantalones,Accesorios,Chaquetas',
             'estado' => 'required|in:disponible,reservado,vendido',
             'imagen' => $imageRule,
@@ -33,7 +33,7 @@ class PrendaRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'talla.in' => 'La talla debe ser S, M, L o XL.',
+            'talla.in' => 'La talla debe ser una opción válida (S, M, L, XL, XXL o número).',
             'categoria.in' => 'La categoría debe ser Camisetas, Hoodies, Pantalones, Accesorios o Chaquetas.',
             'estado.in' => 'El estado debe ser disponible, reservado o vendido.',
             'titulo.max' => 'El título no puede exceder 255 caracteres.',

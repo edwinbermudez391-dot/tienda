@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 class PrendaController extends Controller
 {
     private const CATEGORIAS = ['Camisetas', 'Hoodies', 'Pantalones', 'Accesorios', 'Chaquetas'];
+    private const TALLAS = ['Letras' => ['S', 'M', 'L', 'XL', 'XXL'], 'Números' => ['28', '30', '32', '34', '36', '38', '40', '42', '44']];
 
     public function index(Request $request)
     {
@@ -35,7 +36,8 @@ class PrendaController extends Controller
     public function create()
     {
         $categorias = self::CATEGORIAS;
-        return view('prendas.create', compact('categorias'));
+        $tallas = self::TALLAS;
+        return view('prendas.create', compact('categorias', 'tallas'));
     }
 
     public function store(PrendaRequest $request)
@@ -65,7 +67,8 @@ class PrendaController extends Controller
     public function edit(Prenda $prenda)
     {
         $categorias = self::CATEGORIAS;
-        return view('prendas.edit', compact('prenda', 'categorias'));
+        $tallas = self::TALLAS;
+        return view('prendas.edit', compact('prenda', 'categorias', 'tallas'));
     }
 
     public function update(PrendaRequest $request, Prenda $prenda)

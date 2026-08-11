@@ -101,8 +101,12 @@
                         class="w-full px-4 py-3 bg-[#111210] border border-[#f3f2ec]/10 rounded text-[#f3f2ec] focus:outline-none focus:border-[#c8ff00] transition-colors appearance-none cursor-pointer"
                     >
                         <option value="">Seleccionar talla</option>
-                        @foreach(['S','M','L','XL'] as $t)
-                            <option value="{{ $t }}" {{ old('talla') == $t ? 'selected' : '' }}>{{ $t }}</option>
+                        @foreach($tallas as $nombre_grupo => $grupo)
+                            <optgroup label="{{ $nombre_grupo }}">
+                                @foreach($grupo as $t)
+                                    <option value="{{ $t }}" {{ old('talla') == $t ? 'selected' : '' }}>{{ $t }}</option>
+                                @endforeach
+                            </optgroup>
                         @endforeach
                     </select>
                     @error('talla')
