@@ -9,7 +9,7 @@
 
 @section('content')
     <div class="mx-auto max-w-7xl px-5 py-10 md:px-8 md:py-16">
-      <a href="{{ url()->previous() }}" class="inline-flex items-center gap-2 text-zinc-400 hover:text-[#ccff00] transition-colors duration-300 mb-6 text-sm md:text-base font-semibold group">
+      <a href="{{ route('prendas.index') }}#exposicion" onclick="event.preventDefault(); window.history.back();" class="inline-flex items-center gap-2 text-zinc-400 hover:text-[#ccff00] transition-colors duration-300 mb-6 text-sm md:text-base font-semibold group">
         <svg class="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
         </svg>
