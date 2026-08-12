@@ -174,13 +174,14 @@ catalogoContainer.addEventListener('click', (e) => {
   const link = e.target.closest('a');
   if (!link || !link.getAttribute('href')) return;
 
+  const href = link.getAttribute('href');
+  const hasColeccionHash = href.includes('#coleccion');
   const isFilterChip = link.classList.contains('filter-chip');
   const isPaginationLink = !!link.closest('nav[aria-label="Pagination"]') || link.href.includes('page=');
 
-  if (!isFilterChip && !isPaginationLink) return;
+  if (!hasColeccionHash || (!isFilterChip && !isPaginationLink)) return;
 
   e.preventDefault();
-  const href = link.getAttribute('href');
   const url = href.replace(/#coleccion$/, '');
   const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
