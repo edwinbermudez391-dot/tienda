@@ -288,6 +288,20 @@
         });
       });
 
+      document.querySelectorAll('a[href^="/#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          const targetId = href.split('#')[1];
+          const targetElement = document.getElementById(targetId);
+          
+          if (targetElement) {
+            e.preventDefault();
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            history.pushState(null, '', href);
+          }
+        });
+      });
+
       @yield('scripts')
     });
   </script>
