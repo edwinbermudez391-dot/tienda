@@ -175,7 +175,7 @@
       @endauth
     </nav>
     <div class="sticky bottom-0 px-6 py-6 border-t border-white/10 bg-[#1b1d1a]/95 backdrop-blur-md">
-      <a class="lime-action block rounded-full px-6 py-4 text-sm font-bold text-center shadow-lg shadow-[#c8ff00]/20" href="/#exposicion">
+      <a id="drawer-cta" class="lime-action block rounded-full px-6 py-4 text-sm font-bold text-center shadow-lg shadow-[#c8ff00]/20" href="/#exposicion">
         Ver piezas
       </a>
       <p class="mono text-[10px] tracking-[.15em] text-[#a5aaa6] text-center mt-4">BOGOTÁ · 2026</p>
@@ -298,6 +298,10 @@
             e.preventDefault();
             targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
             history.pushState(null, '', href);
+            
+            if (drawer.contains(link)) {
+              closeDrawer();
+            }
           }
         });
       });
