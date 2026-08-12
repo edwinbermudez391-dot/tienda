@@ -69,25 +69,10 @@
                 </div>
 
                 <div>
-                    <label for="talla" class="block text-xs font-bold uppercase tracking-wider text-[#f3f2ec]/70 mb-2 mono">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-[#f3f2ec]/70 mb-2 mono">
                         Talla <span class="text-[#c8ff00]">*</span>
                     </label>
-                    <div class="flex gap-4 mb-3">
-                        <label class="flex items-center gap-2 cursor-pointer group">
-                            <input type="radio" name="tipo_talla" value="Letras"
-                                class="w-4 h-4 border-2 border-[#f3f2ec]/20 bg-[#111210] text-[#c8ff00] focus:ring-[#c8ff00]/50 cursor-pointer transition-colors">
-                            <span class="text-sm text-[#f3f2ec]/80 group-hover:text-[#c8ff00] transition-colors">Letras</span>
-                        </label>
-                        <label class="flex items-center gap-2 cursor-pointer group">
-                            <input type="radio" name="tipo_talla" value="Números"
-                                class="w-4 h-4 border-2 border-[#f3f2ec]/20 bg-[#111210] text-[#c8ff00] focus:ring-[#c8ff00]/50 cursor-pointer transition-colors">
-                            <span class="text-sm text-[#f3f2ec]/80 group-hover:text-[#c8ff00] transition-colors">Números</span>
-                        </label>
-                    </div>
-                    <select id="talla" name="talla"
-                        class="w-full px-4 py-3 bg-[#111210] border border-[#f3f2ec]/10 rounded text-[#f3f2ec] focus:outline-none focus:border-[#c8ff00] transition-colors appearance-none cursor-pointer">
-                        <option value="">Seleccionar talla</option>
-                    </select>
+                    <x-size-selector :tallas="$tallas" :selected="old('talla', $prenda->talla)" name="talla" />
                     @error('talla')
                         <p class="mt-1 text-sm text-red-400">{{ $message }}</p>
                     @enderror
@@ -164,46 +149,4 @@
                 </a>
             </div>
         </form>
-
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const tallasData = @json($tallas);
-            const oldTalla = "{{ old('talla', $prenda->talla ?? '') }}";
-            const radios = document.querySelectorAll('input[name="tipo_talla"]');
-            const select = document.getElementById('talla');
-
-            function renderOptions(tipo) {
-                select.innerHTML = '<option value="">Seleccionar talla</option>';
-                if (tallasData[tipo]) {
-                    tallasData[tipo].forEach(function(t) {
-                        const opt = document.createElement('option');
-                        opt.value = t;
-                        opt.textContent = t;
-                        if (t === oldTalla) opt.selected = true;
-                        select.appendChild(opt);
-                    });
-                }
-            }
-
-            function detectType(value) {
-                for (const tipo in tallasData) {
-                    if (tallasData[tipo].includes(value)) return tipo;
-                }
-                return null;
-            }
-
-            radios.forEach(function(r) {
-                r.addEventListener('change', function(e) {
-                    renderOptions(e.target.value);
-                });
-            });
-
-            const tipo = detectType(oldTalla);
-            if (tipo) {
-                const radio = document.querySelector('input[name="tipo_talla"][value="' + tipo + '"]');
-                if (radio) radio.checked = true;
-                renderOptions(tipo);
-            }
-        });
-        </script>
 @endsection
