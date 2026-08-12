@@ -124,7 +124,6 @@
         <span class="mono font-bold tracking-[-.1em] text-lg sm:text-xl text-[#f3f2ec]">URBAN HAUS.</span>
       </a>
       <div class="desktop-nav hidden md:flex items-center gap-7">
-        <a class="text-sm text-white/70 transition hover:text-[#c8ff00]" href="/#spotlight">Spotlight</a>
         <a class="text-sm text-white/70 transition hover:text-[#c8ff00]" href="/#exposicion">Exposición</a>
         <a class="text-sm text-white/70 transition hover:text-[#c8ff00]" href="/#muro">Muro de estilo</a>
         <a class="text-sm text-white/70 transition hover:text-[#c8ff00]" href="/#contacto">Contacto</a>
@@ -156,20 +155,16 @@
       </button>
     </div>
     <nav class="flex flex-col py-6">
-      <a class="drawer-link" href="/#spotlight">
-        <span class="mono text-[10px] tracking-[.2em] text-[#c8ff00] font-bold block mb-1.5">01</span>
-        <span class="text-lg font-semibold">Spotlight</span>
-      </a>
       <a class="drawer-link" href="/#exposicion">
-        <span class="mono text-[10px] tracking-[.2em] text-[#c8ff00] font-bold block mb-1.5">02</span>
+        <span class="mono text-[10px] tracking-[.2em] text-[#c8ff00] font-bold block mb-1.5">01</span>
         <span class="text-lg font-semibold">Exposición</span>
       </a>
       <a class="drawer-link" href="/#muro">
-        <span class="mono text-[10px] tracking-[.2em] text-[#c8ff00] font-bold block mb-1.5">03</span>
+        <span class="mono text-[10px] tracking-[.2em] text-[#c8ff00] font-bold block mb-1.5">02</span>
         <span class="text-lg font-semibold">Muro de Estilo</span>
       </a>
       <a class="drawer-link" href="/#contacto">
-        <span class="mono text-[10px] tracking-[.2em] text-[#c8ff00] font-bold block mb-1.5">04</span>
+        <span class="mono text-[10px] tracking-[.2em] text-[#c8ff00] font-bold block mb-1.5">03</span>
         <span class="text-lg font-semibold">Contacto</span>
       </a>
       @auth
