@@ -23,20 +23,6 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
-        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" name="remember"
-                    class="rounded border-[#f3f2ec]/20 bg-[#111210] text-[#c8ff00] shadow-sm focus:ring-[#c8ff00]/50">
-                <span class="ms-2 text-sm text-[#a5aaa6]">Recordarme</span>
-            </label>
-
-            @if (Route::has('password.request'))
-                <a class="text-sm text-[#c8ff00] hover:underline" href="{{ route('password.request') }}">
-                    ¿Olvidaste tu contraseña?
-                </a>
-            @endif
-        </div>
-
         <button type="submit"
             class="w-full bg-[#c8ff00] text-[#111210] font-bold py-3.5 px-6 rounded hover:bg-[#c8ff00]/90 transition-colors tracking-wider uppercase text-sm mono">
             Ingresar
