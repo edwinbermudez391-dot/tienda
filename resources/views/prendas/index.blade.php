@@ -25,7 +25,7 @@
           <h1 class="entry mt-5 font-bold uppercase leading-[.84] tracking-[-.07em] text-3xl sm:text-4xl md:text-6xl text-[#f3f2ec]">LA CIUDAD VISTE EN CAPAS.</h1>
           <p class="entry mt-6 sm:mt-7 max-w-xl leading-relaxed text-white/70 md:text-lg">Una selección de siluetas, texturas y señales para recorrer la ciudad sin seguir el mismo mapa. Archivo vivo de lo que se mueve afuera.</p>
           <div class="entry mt-8 sm:mt-9 flex flex-wrap gap-3">
-            <a class="lime-action rounded-full px-5 sm:px-6 py-3 sm:py-3.5 text-sm font-bold" href="#coleccion">Explorar exposición</a>
+            <a class="lime-action rounded-full px-5 sm:px-6 py-3 sm:py-3.5 text-sm font-bold" href="#exposicion">Explorar exposición</a>
           </div>
         </div>
       </div>
@@ -79,7 +79,7 @@
       </div>
     </section>
 
-    <section id="coleccion" class="border-t border-white/10 mx-auto max-w-7xl px-5 sm:px-6 py-16 sm:py-20 md:px-8 md:py-28">
+    <section id="exposicion" class="border-t border-white/10 mx-auto max-w-7xl px-5 sm:px-6 py-16 sm:py-20 md:px-8 md:py-28">
       <div class="flex flex-col justify-between gap-6 sm:gap-7 md:flex-row md:items-end">
         <div>
           <p class="mono text-xs tracking-[.18em] text-[#c8ff00] font-bold">02 / CATÁLOGO CURATORIAL</p>
@@ -90,11 +90,11 @@
 
       <div id="catalogo-contenedor">
         <div class="mt-8 flex flex-wrap gap-3">
-          <a href="{{ route('prendas.index') }}#coleccion" class="filter-chip rounded-full border px-4 py-2 mono text-xs font-bold transition {{ !request('categoria') ? 'bg-[#c8ff00] text-[#111210] border-[#c8ff00]' : 'border-white/20 text-[#a5aaa6] hover:border-[#c8ff00] hover:text-[#c8ff00]' }}">
+          <a href="{{ route('prendas.index') }}#exposicion" class="filter-chip rounded-full border px-4 py-2 mono text-xs font-bold transition {{ !request('categoria') ? 'bg-[#c8ff00] text-[#111210] border-[#c8ff00]' : 'border-white/20 text-[#a5aaa6] hover:border-[#c8ff00] hover:text-[#c8ff00]' }}">
             Ver Todo
           </a>
           @foreach($categorias as $cat)
-            <a href="{{ route('prendas.index', ['categoria' => $cat]) }}#coleccion" class="filter-chip rounded-full border px-4 py-2 mono text-xs font-bold transition {{ request('categoria') == $cat ? 'bg-[#c8ff00] text-[#111210] border-[#c8ff00]' : 'border-white/20 text-[#a5aaa6] hover:border-[#c8ff00] hover:text-[#c8ff00]' }}">
+            <a href="{{ route('prendas.index', ['categoria' => $cat]) }}#exposicion" class="filter-chip rounded-full border px-4 py-2 mono text-xs font-bold transition {{ request('categoria') == $cat ? 'bg-[#c8ff00] text-[#111210] border-[#c8ff00]' : 'border-white/20 text-[#a5aaa6] hover:border-[#c8ff00] hover:text-[#c8ff00]' }}">
               {{ $cat }}
             </a>
           @endforeach
@@ -175,14 +175,14 @@ catalogoContainer.addEventListener('click', (e) => {
   if (!link || !link.getAttribute('href')) return;
 
   const href = link.getAttribute('href');
-  const hasColeccionHash = href.includes('#coleccion');
+  const hasExposicionHash = href.includes('#exposicion');
   const isFilterChip = link.classList.contains('filter-chip');
   const isPaginationLink = !!link.closest('nav[aria-label="Pagination"]') || link.href.includes('page=');
 
-  if (!hasColeccionHash || (!isFilterChip && !isPaginationLink)) return;
+  if (!hasExposicionHash || (!isFilterChip && !isPaginationLink)) return;
 
   e.preventDefault();
-  const url = href.replace(/#coleccion$/, '');
+  const url = href.replace(/#exposicion$/, '');
   const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
   fetch(url, {
@@ -202,9 +202,9 @@ catalogoContainer.addEventListener('click', (e) => {
       const originalBehavior = htmlElement.style.scrollBehavior;
       htmlElement.style.scrollBehavior = 'auto';
 
-      const coleccionSection = document.getElementById('coleccion');
-      if (coleccionSection) {
-        const topPos = coleccionSection.getBoundingClientRect().top + window.pageYOffset - 80;
+      const exposicionSection = document.getElementById('exposicion');
+      if (exposicionSection) {
+        const topPos = exposicionSection.getBoundingClientRect().top + window.pageYOffset - 80;
         window.scrollTo({ top: topPos, behavior: 'instant' });
       }
 

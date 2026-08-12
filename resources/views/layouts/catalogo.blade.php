@@ -124,14 +124,14 @@
         <span class="mono font-bold tracking-[-.1em] text-lg sm:text-xl text-[#f3f2ec]">URBAN HAUS.</span>
       </a>
       <div class="desktop-nav hidden md:flex items-center gap-7">
-        <a class="text-sm text-white/70 transition hover:text-[#c8ff00]" href="{{ route('prendas.index') }}#spotlight">Spotlight</a>
-        <a class="text-sm text-white/70 transition hover:text-[#c8ff00]" href="{{ route('prendas.index') }}#coleccion">Exposición</a>
-        <a class="text-sm text-white/70 transition hover:text-[#c8ff00]" href="{{ route('prendas.index') }}#muro">Muro de estilo</a>
-        <a class="text-sm text-white/70 transition hover:text-[#c8ff00]" href="{{ route('prendas.index') }}#contacto">Contacto</a>
+        <a class="text-sm text-white/70 transition hover:text-[#c8ff00]" href="/#spotlight">Spotlight</a>
+        <a class="text-sm text-white/70 transition hover:text-[#c8ff00]" href="/#exposicion">Exposición</a>
+        <a class="text-sm text-white/70 transition hover:text-[#c8ff00]" href="/#muro">Muro de estilo</a>
+        <a class="text-sm text-white/70 transition hover:text-[#c8ff00]" href="/#contacto">Contacto</a>
         @auth
         <a class="text-sm text-[#c8ff00] border border-[#c8ff00] px-4 py-1 rounded-full transition hover:bg-[#c8ff00] hover:text-[#111210]" href="{{ route('prendas.admin') }}">Panel Admin</a>
         @endauth
-        <a class="lime-action rounded-full px-5 py-2.5 text-sm font-bold" href="{{ route('prendas.index') }}#coleccion">Ver piezas</a>
+        <a class="lime-action rounded-full px-5 py-2.5 text-sm font-bold" href="/#exposicion">Ver piezas</a>
       </div>
       <button id="menu-toggle" class="mobile-toggle md:hidden flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm transition-all hover:border-[#c8ff00] hover:bg-[#c8ff00]/10" type="button" aria-label="Abrir menú">
         <svg class="w-5 h-5 text-[#f3f2ec]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -156,19 +156,19 @@
       </button>
     </div>
     <nav class="flex flex-col py-6">
-      <a class="drawer-link" href="{{ route('prendas.index') }}#spotlight">
+      <a class="drawer-link" href="/#spotlight">
         <span class="mono text-[10px] tracking-[.2em] text-[#c8ff00] font-bold block mb-1.5">01</span>
         <span class="text-lg font-semibold">Spotlight</span>
       </a>
-      <a class="drawer-link" href="{{ route('prendas.index') }}#coleccion">
+      <a class="drawer-link" href="/#exposicion">
         <span class="mono text-[10px] tracking-[.2em] text-[#c8ff00] font-bold block mb-1.5">02</span>
         <span class="text-lg font-semibold">Exposición</span>
       </a>
-      <a class="drawer-link" href="{{ route('prendas.index') }}#muro">
+      <a class="drawer-link" href="/#muro">
         <span class="mono text-[10px] tracking-[.2em] text-[#c8ff00] font-bold block mb-1.5">03</span>
         <span class="text-lg font-semibold">Muro de Estilo</span>
       </a>
-      <a class="drawer-link" href="{{ route('prendas.index') }}#contacto">
+      <a class="drawer-link" href="/#contacto">
         <span class="mono text-[10px] tracking-[.2em] text-[#c8ff00] font-bold block mb-1.5">04</span>
         <span class="text-lg font-semibold">Contacto</span>
       </a>
@@ -180,7 +180,7 @@
       @endauth
     </nav>
     <div class="sticky bottom-0 px-6 py-6 border-t border-white/10 bg-[#1b1d1a]/95 backdrop-blur-md">
-      <a class="lime-action block rounded-full px-6 py-4 text-sm font-bold text-center shadow-lg shadow-[#c8ff00]/20" href="{{ route('prendas.index') }}#coleccion">
+      <a class="lime-action block rounded-full px-6 py-4 text-sm font-bold text-center shadow-lg shadow-[#c8ff00]/20" href="/#exposicion">
         Ver piezas
       </a>
       <p class="mono text-[10px] tracking-[.15em] text-[#a5aaa6] text-center mt-4">BOGOTÁ · 2026</p>
