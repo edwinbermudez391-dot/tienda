@@ -168,35 +168,24 @@
     @endsection
 
 @section('scripts')
-document.addEventListener('click', (e) => {
-  // 1. Verifica que el target sea un enlace con href
+const catalogoContainer = document.getElementById('catalogo-contenedor');
+
+catalogoContainer.addEventListener('click', (e) => {
   const link = e.target.closest('a');
   if (!link || !link.getAttribute('href')) return;
 
-  // 2. Excluye explícitamente nav y .drawer-link
-  if (link.closest('nav') || link.classList.contains('drawer-link')) return;
+  const isFilterChip = link.classList.contains('filter-chip');
+  const isPaginationLink = !!link.closest('nav[aria-label="Pagination"]') || link.href.includes('page=');
 
-  // 3. Verifica que #catalogo-contenedor exista
-  const contenedor = document.getElementById('catalogo-contenedor');
-  if (!contenedor) return;
-
-  // 4. Confirma que el clic sea dentro del contenedor
-  if (!contenedor.contains(link)) return;
-
-  // 5. Solo intercepta .filter-chip o enlaces de paginación
-  if (!link.classList.contains('filter-chip') && !link.closest('nav') && !link.href.includes('page=')) {
-    // Si no pertenece a filtros ni paginación interna, permitir comportamiento normal
-    return;
-  }
+  if (!isFilterChip && !isPaginationLink) return;
 
   e.preventDefault();
   const href = link.getAttribute('href');
-  const url = href;
-
+  const url = href.replace(/#coleccion$/, '');
   const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
   fetch(url, {
-    headers: { 
+    headers: {
       'X-Requested-With': 'XMLHttpRequest',
       'X-CSRF-TOKEN': csrfToken
     }
@@ -206,26 +195,22 @@ document.addEventListener('click', (e) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
     const newContent = doc.querySelector('#catalogo-contenedor');
-    
+
     if (newContent) {
       const htmlElement = document.documentElement;
       const originalBehavior = htmlElement.style.scrollBehavior;
       htmlElement.style.scrollBehavior = 'auto';
-      
+
       const coleccionSection = document.getElementById('coleccion');
       if (coleccionSection) {
         const topPos = coleccionSection.getBoundingClientRect().top + window.pageYOffset - 80;
         window.scrollTo({ top: topPos, behavior: 'instant' });
       }
-      
-      document.getElementById('catalogo-contenedor').innerHTML = newContent.innerHTML;
-      
-      // 6. Corrige history.pushState para usar href completo (mantiene el ancla #coleccion)
-      history.pushState(null, '', url);
-      if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-      }
-      
+
+      catalogoContainer.innerHTML = newContent.innerHTML;
+      history.pushState(null, '', href);
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+
       requestAnimationFrame(() => {
         htmlElement.style.scrollBehavior = originalBehavior;
       });
@@ -239,7 +224,7 @@ window.addEventListener('popstate', () => {
   const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
   fetch(url, {
-    headers: { 
+    headers: {
       'X-Requested-With': 'XMLHttpRequest',
       'X-CSRF-TOKEN': csrfToken
     }
@@ -249,23 +234,21 @@ window.addEventListener('popstate', () => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
     const newContent = doc.querySelector('#catalogo-contenedor');
-    
+
     if (newContent) {
       const htmlElement = document.documentElement;
       const originalBehavior = htmlElement.style.scrollBehavior;
       htmlElement.style.scrollBehavior = 'auto';
-      
+
       const coleccionSection = document.getElementById('coleccion');
       if (coleccionSection) {
         const topPos = coleccionSection.getBoundingClientRect().top + window.pageYOffset - 80;
         window.scrollTo({ top: topPos, behavior: 'instant' });
       }
-      
+
       document.getElementById('catalogo-contenedor').innerHTML = newContent.innerHTML;
-      if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-      }
-      
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+
       requestAnimationFrame(() => {
         htmlElement.style.scrollBehavior = originalBehavior;
       });
