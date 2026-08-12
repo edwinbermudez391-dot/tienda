@@ -164,16 +164,34 @@
         </div>
       </div>
     </section>
-@endsection
+
+    @endsection
 
 @section('scripts')
 document.addEventListener('click', (e) => {
-  const link = e.target.closest('#catalogo-contenedor a');
-  if (!link) return;
+  // 1. Verifica que el target sea un enlace con href
+  const link = e.target.closest('a');
+  if (!link || !link.getAttribute('href')) return;
+
+  // 2. Excluye explícitamente nav y .drawer-link
+  if (link.closest('nav') || link.classList.contains('drawer-link')) return;
+
+  // 3. Verifica que #catalogo-contenedor exista
+  const contenedor = document.getElementById('catalogo-contenedor');
+  if (!contenedor) return;
+
+  // 4. Confirma que el clic sea dentro del contenedor
+  if (!contenedor.contains(link)) return;
+
+  // 5. Solo intercepta .filter-chip o enlaces de paginación
+  if (!link.classList.contains('filter-chip') && !link.closest('nav') && !link.href.includes('page=')) {
+    // Si no pertenece a filtros ni paginación interna, permitir comportamiento normal
+    return;
+  }
 
   e.preventDefault();
   const href = link.getAttribute('href');
-  const url = href.replace(/#coleccion$/, '');
+  const url = href;
 
   const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
@@ -201,8 +219,12 @@ document.addEventListener('click', (e) => {
       }
       
       document.getElementById('catalogo-contenedor').innerHTML = newContent.innerHTML;
+      
+      // 6. Corrige history.pushState para usar href completo (mantiene el ancla #coleccion)
       history.pushState(null, '', url);
-      lucide.createIcons();
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
       
       requestAnimationFrame(() => {
         htmlElement.style.scrollBehavior = originalBehavior;
@@ -240,7 +262,9 @@ window.addEventListener('popstate', () => {
       }
       
       document.getElementById('catalogo-contenedor').innerHTML = newContent.innerHTML;
-      lucide.createIcons();
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
       
       requestAnimationFrame(() => {
         htmlElement.style.scrollBehavior = originalBehavior;
