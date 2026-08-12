@@ -133,7 +133,7 @@
         </div>
 
         <div class="mt-12">
-          {{ $prendas->links('vendor.pagination.urban-haus') }}
+          {{ $prendas->appends(request()->query())->fragment('exposicion')->links('vendor.pagination.urban-haus') }}
         </div>
       </div>
     </section>
@@ -198,23 +198,11 @@ catalogoContainer.addEventListener('click', (e) => {
     const newContent = doc.querySelector('#catalogo-contenedor');
 
     if (newContent) {
-      const htmlElement = document.documentElement;
-      const originalBehavior = htmlElement.style.scrollBehavior;
-      htmlElement.style.scrollBehavior = 'auto';
-
-      const exposicionSection = document.getElementById('exposicion');
-      if (exposicionSection) {
-        const topPos = exposicionSection.getBoundingClientRect().top + window.pageYOffset - 80;
-        window.scrollTo({ top: topPos, behavior: 'instant' });
-      }
-
       catalogoContainer.innerHTML = newContent.innerHTML;
       history.pushState(null, '', href);
       if (typeof lucide !== 'undefined') lucide.createIcons();
 
-      requestAnimationFrame(() => {
-        htmlElement.style.scrollBehavior = originalBehavior;
-      });
+      document.querySelector('#exposicion').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   })
   .catch(error => console.error('Error:', error));
@@ -237,22 +225,10 @@ window.addEventListener('popstate', () => {
     const newContent = doc.querySelector('#catalogo-contenedor');
 
     if (newContent) {
-      const htmlElement = document.documentElement;
-      const originalBehavior = htmlElement.style.scrollBehavior;
-      htmlElement.style.scrollBehavior = 'auto';
-
-      const coleccionSection = document.getElementById('coleccion');
-      if (coleccionSection) {
-        const topPos = coleccionSection.getBoundingClientRect().top + window.pageYOffset - 80;
-        window.scrollTo({ top: topPos, behavior: 'instant' });
-      }
-
       document.getElementById('catalogo-contenedor').innerHTML = newContent.innerHTML;
       if (typeof lucide !== 'undefined') lucide.createIcons();
 
-      requestAnimationFrame(() => {
-        htmlElement.style.scrollBehavior = originalBehavior;
-      });
+      document.querySelector('#exposicion').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   })
   .catch(error => console.error('Error:', error));
