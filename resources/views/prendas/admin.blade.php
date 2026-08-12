@@ -132,6 +132,6 @@
         </div>
 
         <div class="mt-8 border-t border-white/10 pt-6">
-            {{ $prendas->links() }}
+            {{ $prendas->links('vendor.pagination.admin-simple') }}
         </div>
 @endsection
